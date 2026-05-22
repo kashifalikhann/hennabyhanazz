@@ -1,0 +1,61 @@
+---
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+const base = import.meta.env.BASE_URL;
+---
+
+<section id="cta" class="py-20 md:py-32 lg:py-40 px-6" style="background: var(--color-gold);">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="font-display text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight" style="color: #0A0A0A;">
+      {isEs ? '¿Listo para tu Experiencia de Henna?' : 'Ready for Your Henna Experience?'}
+    </h2>
+    <p class="mt-4 md:mt-6 text-base md:text-lg leading-relaxed" style="color: rgba(10,10,10,0.7);">
+      {isEs ? 'Reserva tu cita hoy y descubre el arte de la henna.' : 'Book your appointment today and discover the art of henna.'}
+    </p>
+    <a href={`${base}${isEs ? '/es' : ''}/book`} class="inline-flex items-center gap-3 rounded-full px-6 md:px-8 py-3 md:py-4 font-body font-medium mt-8 md:mt-10 transition-all duration-600 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-[0.98]" style="background: #0A0A0A; color: var(--color-gold);">
+      {isEs ? 'Reserva Ahora' : 'Book Now'}
+      <span class="w-8 h-8 rounded-full flex items-center justify-center" style="background: rgba(201,169,110,0.15);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<footer class="py-12 md:py-16 px-6 border-t border-border">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <a href={base} class="font-display text-lg font-semibold">
+          <span class="text-gold">✦</span> Henna By Hanazz
+        </a>
+        <p class="text-muted text-sm mt-3 max-w-sm leading-relaxed">
+          {isEs ? 'Henna artesanal premium en Barcelona. Cada diseño cuenta una historia.' : 'Premium henna artistry in Barcelona. Every design tells a story.'}
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-display font-semibold text-sm mb-4">{isEs ? 'Enlaces' : 'Links'}</h4>
+        <div class="space-y-2 text-sm text-muted">
+          <a href={`${base}${isEs ? '/es' : ''}/#gallery`} class="block hover:text-text transition-colors">{isEs ? 'Galería' : 'Gallery'}</a>
+          <a href={`${base}${isEs ? '/es' : ''}/#services`} class="block hover:text-text transition-colors">{isEs ? 'Servicios' : 'Services'}</a>
+          <a href={`${base}${isEs ? '/es' : ''}/book`} class="block hover:text-text transition-colors">{isEs ? 'Reservar' : 'Book'}</a>
+          <a href={`${base}${isEs ? '/es' : ''}/gift`} class="block hover:text-text transition-colors">{isEs ? 'Certificados de Regalo' : 'Gift Certificates'}</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-display font-semibold text-sm mb-4">{isEs ? 'Contacto' : 'Contact'}</h4>
+        <div class="space-y-2 text-sm text-muted">
+          <a href="https://www.instagram.com/hennabyhanazz/" target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">Instagram</a>
+          <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">WhatsApp</a>
+          <a href="mailto:info@smgtec.es" class="block hover:text-text transition-colors">info@smgtec.es</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted">
+      <p>&copy; {new Date().getFullYear()} Henna By Hanazz. {isEs ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+      <p>{isEs ? 'Hecho con ✨ en Barcelona' : 'Made with ✨ in Barcelona'}</p>
+    </div>
+  </div>
+</footer>

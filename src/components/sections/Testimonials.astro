@@ -1,0 +1,35 @@
+---
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+const testimonials = [
+  { name: 'Sofia R.', text: isEs ? 'La experiencia fue increíble. Hanazz es una artista talentosa y el estudio es precioso.' : 'The experience was incredible. Hanazz is such a talented artist and the studio is gorgeous.', rating: 5 },
+  { name: 'James T.', text: isEs ? 'Henna perfecta para mi boda. Recibí innumerables cumplidos. Muy recomendable.' : 'Perfect henna for my wedding. Got countless compliments. Highly recommend.', rating: 5 },
+  { name: 'Maria L.', text: isEs ? 'El taller fue divertidísimo y aprendí mucho. Volveré sin duda.' : 'The workshop was so fun and I learned so much. Will definitely come back.', rating: 5 },
+  { name: 'Alex K.', text: isEs ? 'Henna preciosa que duró dos semanas. El diseño personalizado superó mis expectativas.' : 'Beautiful henna that lasted two weeks. The custom design exceeded my expectations.', rating: 5 },
+];
+---
+
+<section id="testimonials" class="py-20 md:py-32 lg:py-40 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <span class="eyebrow">{isEs ? 'Testimonios' : 'Testimonials'}</span>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mt-4 mb-12 md:mb-16">
+      {isEs ? 'Lo Que Dicen Nuestros Clientes' : 'What Our Clients Say'}
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-4 md:gap-6" id="testimonial-grid">
+      {testimonials.map((t, i) => (
+        <div class="double-bezel" style={`transition-delay: ${i * 100}ms`}>
+          <div class="double-bezel-inner bg-surface p-4 md:p-6 lg:p-8 text-left">
+            <div class="flex gap-1 mb-4">
+              {Array.from({ length: t.rating }).map(() => (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A96E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              ))}
+            </div>
+            <p class="text-muted leading-relaxed mb-4 italic">"{t.text}"</p>
+            <p class="font-display font-semibold text-sm">{t.name}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

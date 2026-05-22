@@ -1,0 +1,51 @@
+---
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+---
+
+<section id="experience" class="py-20 md:py-32 lg:py-40 px-6 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle at 50% 50%, var(--color-gold) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="max-w-6xl mx-auto relative">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+      <div class="relative order-2 md:order-1">
+        <div class="double-bezel">
+          <div class="double-bezel-inner aspect-[4/3] bg-surface flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="text-6xl mb-4">🌿</div>
+              <p class="text-muted text-sm italic">{isEs ? 'Imagen del estudio próximamente' : 'Studio image coming soon'}</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -top-4 -left-4 w-32 h-32 rounded-full bg-terracotta/10 -z-10 blur-3xl"></div>
+      </div>
+
+      <div class="space-y-6 order-1 md:order-2">
+        <span class="eyebrow">{isEs ? 'La Experiencia' : 'The Experience'}</span>
+        <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tight">
+          {isEs ? 'Más que henna' : 'More than henna'}
+        </h2>
+        <div class="w-12 h-0.5 bg-gold"></div>
+        <p class="text-muted leading-relaxed text-lg">
+          {isEs
+            ? 'Entra en nuestro estudio en el Barrio Gótico. El aroma del aceite de eucalipto, las velas parpadeando, la música suave. Este no es solo un servicio de henna — es un ritual de cuidado personal.'
+            : 'Step into our Gothic Quarter studio. The scent of eucalyptus oil, flickering candles, soft music. This is not just a henna service — it is a self-care ritual.'}
+        </p>
+        <ul class="space-y-3 text-muted">
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+            {isEs ? 'Ambiente sereno y privado' : 'Serene, private setting'}
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+            {isEs ? 'Materiales premium y henna natural' : 'Premium natural henna materials'}
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+            {isEs ? 'Atención personalizada en cada diseño' : 'Personalized attention to every design'}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

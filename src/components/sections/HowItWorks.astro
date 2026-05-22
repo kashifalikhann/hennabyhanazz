@@ -1,0 +1,93 @@
+---
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+---
+
+<section id="how-it-works" class="py-20 md:py-32 lg:py-40 px-6 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.015]" style="background: repeating-linear-gradient(0deg, transparent, transparent 40px, var(--color-gold) 40px, var(--color-gold) 41px);"></div>
+
+  <div class="max-w-6xl mx-auto relative">
+    <div class="text-center mb-16">
+      <span class="eyebrow">{isEs ? 'Proceso' : 'Process'}</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tight mt-4">
+        {isEs ? 'Cómo Funciona' : 'How It Works'}
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 md:gap-24">
+      <div>
+        <span class="text-[10px] uppercase tracking-[0.3em] text-gold font-semibold">{isEs ? 'Reserva Estándar' : 'Standard Booking'}</span>
+        <div class="mt-8 space-y-8">
+          <div class="flex gap-4">
+            <span class="w-10 h-10 rounded-full bg-gold/10 text-gold font-display text-sm flex items-center justify-center shrink-0">1</span>
+            <div>
+              <h4 class="font-display font-semibold">{isEs ? 'Elige tu Diseño' : 'Choose Your Design'}</h4>
+              <p class="text-muted text-sm mt-1">{isEs ? 'Explora nuestro menú de hermosos diseños' : 'Browse our menu of beautiful designs'}</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="w-10 h-10 rounded-full bg-gold/10 text-gold font-display text-sm flex items-center justify-center shrink-0">2</span>
+            <div>
+              <h4 class="font-display font-semibold">{isEs ? 'Elige tu Fecha' : 'Pick Your Date'}</h4>
+              <p class="text-muted text-sm mt-1">{isEs ? 'Selecciona la fecha y hora que prefieras' : 'Select your preferred date and time'}</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="w-10 h-10 rounded-full bg-gold/10 text-gold font-display text-sm flex items-center justify-center shrink-0">3</span>
+            <div>
+              <h4 class="font-display font-semibold">{isEs ? 'Confirma tu Cita' : 'Secure Your Spot'}</h4>
+              <p class="text-muted text-sm mt-1">{isEs ? 'Paga completo o 50% de depósito para confirmar' : 'Pay full or 50% deposit to confirm'}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="text-[10px] uppercase tracking-[0.3em] text-gold font-semibold">BYOD PREMIUM</span>
+        <div class="mt-8 space-y-8">
+          <div class="flex gap-4">
+            <span class="w-10 h-10 rounded-full bg-gold text-bg font-display text-sm flex items-center justify-center shrink-0">1</span>
+            <div>
+              <h4 class="font-display font-semibold">{isEs ? 'Envía tu Diseño' : 'Submit Your Design'}</h4>
+              <p class="text-muted text-sm mt-1">{isEs ? 'Sube tu concepto o describe tu visión' : 'Upload your concept or describe your vision'}</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="w-10 h-10 rounded-full bg-gold text-bg font-display text-sm flex items-center justify-center shrink-0">2</span>
+            <div>
+              <h4 class="font-display font-semibold">{isEs ? 'Consulta Gratuita' : 'Free Consultation'}</h4>
+              <p class="text-muted text-sm mt-1">{isEs ? 'Hanazz revisa y ofrece su opinión experta' : 'Hanazz reviews and gives expert input'}</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="w-10 h-10 rounded-full bg-gold text-bg font-display text-sm flex items-center justify-center shrink-0">3</span>
+            <div>
+              <h4 class="font-display font-semibold">{isEs ? 'Recibe Presupuesto' : 'Receive Quote'}</h4>
+              <p class="text-muted text-sm mt-1">{isEs ? 'Precio personalizado según la complejidad' : 'Custom pricing based on complexity'}</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="w-10 h-10 rounded-full bg-gold text-bg font-display text-sm flex items-center justify-center shrink-0">4</span>
+            <div>
+              <h4 class="font-display font-semibold">{isEs ? 'Paga Depósito' : 'Pay Deposit'}</h4>
+              <p class="text-muted text-sm mt-1">{isEs ? '50% para confirmar tu cita' : '50% to confirm your booking'}</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="w-10 h-10 rounded-full bg-gold text-bg font-display text-sm flex items-center justify-center shrink-0">5</span>
+            <div>
+              <h4 class="font-display font-semibold">{isEs ? 'Tu Cita' : 'Your Appointment'}</h4>
+              <p class="text-muted text-sm mt-1">{isEs ? 'Fecha confirmada tras el depósito' : 'Date confirmed after deposit'}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-16">
+      <svg width="200" height="40" viewBox="0 0 200 40" class="text-gold/30">
+        <path d="M10 20 Q 50 5, 100 20 Q 150 35, 190 20" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+      </svg>
+    </div>
+  </div>
+</section>

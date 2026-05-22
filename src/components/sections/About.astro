@@ -1,0 +1,40 @@
+---
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+---
+
+<section id="about" class="py-20 md:py-32 lg:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+      <div class="space-y-6">
+        <span class="eyebrow">{isEs ? 'La Artista' : 'The Artist'}</span>
+        <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tight">
+          {isEs ? 'Cada diseño cuenta una historia' : 'Every design tells a story'}
+        </h2>
+        <div class="w-12 h-0.5 bg-gold"></div>
+        <p class="text-muted leading-relaxed text-lg">
+          {isEs
+            ? 'Hanazz transforma la henna en arte. Con años de experiencia y una profunda conexión con la tradición, cada diseño es una pieza única de belleza y significado cultural.'
+            : 'Hanazz transforms henna into art. With years of mastery and a deep connection to tradition, every design is a unique piece of beauty and cultural meaning.'}
+        </p>
+        <p class="text-muted leading-relaxed">
+          {isEs
+            ? 'Desde bodas y eventos hasta sesiones espontáneas, cada aplicación es una experiencia meditativa de creatividad y conexión.'
+            : 'From weddings and events to spontaneous walk-in sessions, every application is a meditative experience of creativity and connection.'}
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="double-bezel">
+          <div class="double-bezel-inner aspect-[3/4] bg-surface flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="text-6xl mb-4">🖐️</div>
+              <p class="text-muted text-sm italic">{isEs ? 'Foto de Hanazz próximamente' : 'Hanazz photo coming soon'}</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-gold/10 -z-10 blur-3xl"></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+import InstagramFeed from '../gallery/InstagramFeed.jsx';
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+const base = import.meta.env.BASE_URL;
+---
+
+<section id="gallery" class="py-20 md:py-32 lg:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10 md:mb-12">
+      <span class="eyebrow">{isEs ? 'Portafolio' : 'Portfolio'}</span>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mt-4">
+        {isEs ? 'Nuestro Trabajo' : 'Our Work'}
+      </h2>
+    </div>
+
+    <InstagramFeed client:load lang={lang} />
+
+    <div class="text-center mt-8">
+      <a
+        href="https://www.instagram.com/hennabyhanazz/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-ghost"
+      >
+        {isEs ? 'Sigue a @hennabyhanazz en Instagram' : 'Follow @hennabyhanazz on Instagram'} ↗
+      </a>
+    </div>
+  </div>
+</section>

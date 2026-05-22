@@ -1,0 +1,82 @@
+---
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+const faqs = [
+  {
+    q: isEs ? '¿Cuánto dura la henna?' : 'How long does henna last?',
+    a: isEs ? 'La henna dura de 1 a 3 semanas dependiendo del cuidado y la ubicación en el cuerpo.' : 'Henna lasts 1-3 weeks depending on aftercare and body placement.'
+  },
+  {
+    q: isEs ? '¿Duele la aplicación de henna?' : 'Does henna application hurt?',
+    a: isEs ? 'No, la henna no duele. Es una sensación fresca y relajante.' : 'No, henna does not hurt. It feels cool and relaxing.'
+  },
+  {
+    q: isEs ? '¿Cómo reservo una cita?' : 'How do I book an appointment?',
+    a: isEs ? 'Selecciona un servicio, elige fecha y hora, y paga el depósito para confirmar.' : 'Select a service, pick a date and time, and pay a deposit to confirm.'
+  },
+  {
+    q: isEs ? '¿Ofrecéis servicios para eventos?' : 'Do you offer event services?',
+    a: isEs ? 'Sí, ofrecemos henna en vivo para bodas, fiestas y eventos corporativos. Contáctanos para presupuesto.' : 'Yes, we offer live henna for weddings, parties, and corporate events. Contact us for a quote.'
+  },
+  {
+    q: isEs ? '¿Cuál es vuestra política de cancelación?' : 'What is your cancellation policy?',
+    a: isEs ? 'Cancelaciones con 24 horas de antelación reciben reembolso completo.' : 'Cancellations with 24 hours notice receive a full refund.'
+  },
+  {
+    q: isEs ? '¿Usáis henna natural?' : 'Do you use natural henna?',
+    a: isEs ? 'Sí, usamos henna 100% natural de alta calidad, libre de aditivos químicos.' : 'Yes, we use 100% natural, high-quality henna free from chemical additives.'
+  },
+];
+---
+
+<section id="faq" class="py-20 md:py-32 lg:py-40 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tight mt-4">
+        {isEs ? 'Preguntas Frecuentes' : 'FAQ'}
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {faqs.map((faq, i) => (
+        <div class="border border-border rounded-[1.5rem] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] faq-item">
+          <button class="w-full flex items-center justify-between p-6 text-left" data-faq-toggle>
+            <span class="font-display font-semibold pr-4">{faq.q}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 transition-transform duration-500 faq-chevron">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] faq-answer">
+            <p class="text-muted pb-6 leading-relaxed">{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-faq-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const chevron = item.querySelector('.faq-chevron');
+      const isOpen = item.dataset.open === 'true';
+
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.dataset.open = 'false';
+        i.querySelector('.faq-answer').style.maxHeight = '0';
+        i.querySelector('.faq-answer').style.paddingBottom = '0';
+        i.querySelector('.faq-chevron').style.transform = 'rotate(0deg)';
+      });
+
+      if (!isOpen) {
+        item.dataset.open = 'true';
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.style.paddingBottom = '1.5rem';
+        chevron.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+</script>

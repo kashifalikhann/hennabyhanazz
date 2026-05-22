@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import Nav from '../components/ui/Nav.astro';
+import WhatsAppButton from '../components/ui/WhatsAppButton.astro';
+import BackToTop from '../components/ui/BackToTop.astro';
+import Footer from '../components/sections/CTAFooter.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: 'en' | 'es';
+  ogImage?: string;
+}
+
+const { title, description, lang = 'en', ogImage } = Astro.props;
+const isEs = lang === 'es';
+const path = isEs ? Astro.url.pathname.replace(/^\/es/, '') || '/' : Astro.url.pathname;
+const canonical = `https://kashifalikhann.github.io/hennabyhanazz${isEs ? '/es' : ''}${path === '/' ? '' : path}`;
+const altLangPath = isEs ? path : `/es${path === '/' ? '' : path}`;
+const altLangLabel = isEs ? 'English' : 'Español';
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Henna By Hanazz</title>
+  <meta name="description" content={description || "Barcelona's premier henna artistry — Book your appointment today."} />
+  <link rel="canonical" href={canonical} />
+
+  <link rel="alternate" hreflang="en" href={`https://kashifalikhann.github.io/hennabyhanazz${path === '/' ? '' : path}`} />
+  <link rel="alternate" hreflang="es" href={`https://kashifalikhann.github.io/hennabyhanazz/es${path === '/' ? '' : path}`} />
+
+  <meta property="og:title" content={`${title} | Henna By Hanazz`} />
+  <meta property="og:description" content={description || "Barcelona's premier henna artistry"} />
+  <meta property="og:image" content={ogImage || 'https://kashifalikhann.github.io/hennabyhanazz/og-image.png'} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Henna By Hanazz",
+    "description": "Barcelona henna artist — Premium henna artistry for events, walk-ins, and custom designs.",
+    "url": "https://kashifalikhann.github.io/hennabyhanazz",
+    "telephone": "+34XXXXXXXXX",
+    "email": "info@smgtec.es",
+    "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" },
+    "priceRange": "€€",
+    "image": "https://kashifalikhann.github.io/hennabyhanazz/og-image.png",
+    "sameAs": ["https://www.instagram.com/hennabyhanazz/"]
+  })} />
+
+  <link rel="manifest" href="/hennabyhanazz/manifest.json" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  {import.meta.env.PUBLIC_GTM_ID && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GTM_ID}`}></script>
+      <script set:html={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${import.meta.env.PUBLIC_GTM_ID}');
+      `} />
+    </>
+  )}
+
+  {import.meta.env.PUBLIC_FB_PIXEL_ID && (
+    <script set:html={`
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '${import.meta.env.PUBLIC_FB_PIXEL_ID}');
+      fbq('track', 'PageView');
+    `} />
+  )}
+</head>
+<body>
+  <div class="noise-overlay" />
+
+  <Nav lang={lang} />
+  <main>
+    <slot />
+  </main>
+  <Footer lang={lang} />
+
+  <WhatsAppButton lang={lang} />
+  <BackToTop lang={lang} />
+
+  <script>
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const stored = localStorage.getItem('theme');
+    const theme = stored ? stored : (prefersDark ? 'dark' : 'light');
+    document.documentElement.classList.toggle('light', theme === 'light');
+  </script>
+</body>
+</html>

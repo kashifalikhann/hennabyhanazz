@@ -1,0 +1,64 @@
+---
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+const base = import.meta.env.BASE_URL;
+---
+
+<section id="hero" class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-bg via-bg/95 to-bg z-10"></div>
+
+  <div class="absolute inset-0 z-0" id="hero-bg">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 50%, rgba(201,169,110,0.08) 0%, transparent 60%), radial-gradient(circle at 70% 80%, rgba(212,118,74,0.05) 0%, transparent 50%);"></div>
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l5 15 15 5-15 5-5 15-5-15-15-5 15-5z' fill='none' stroke='%23C9A96E' stroke-width='0.5'/%3E%3C/svg%3E&quot;); background-size: 120px 120px;"></div>
+  </div>
+
+  <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+    <div class="scroll-reveal">
+      <span class="eyebrow">{isEs ? 'Henna Artesanal en Barcelona' : 'Barcelona Henna Artistry'}</span>
+    </div>
+
+    <h1 class="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mt-6 scroll-reveal" style="transition-delay: 200ms;">
+      Henna By <span class="text-gold">Hanazz</span>
+    </h1>
+
+    <p class="font-body text-lg md:text-xl text-muted mt-6 max-w-2xl mx-auto leading-relaxed scroll-reveal" style="transition-delay: 400ms;">
+      {isEs
+        ? 'Donde la tradición se encuentra con el lujo — diseños de henna personalizados en el corazón de Barcelona.'
+        : 'Where tradition meets luxury — bespoke henna designs in the heart of Barcelona.'}
+    </p>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 scroll-reveal" style="transition-delay: 600ms;">
+      <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary text-base">
+        {isEs ? 'Reserva tu Experiencia' : 'Book Your Experience'}
+        <span class="icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+      <a href={`${base}${isEs ? '/es' : ''}/#gallery`} class="btn-ghost text-base">
+        {isEs ? 'Ver Galería' : 'View Gallery'}
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-muted">
+      <path d="M6 9l6 6 6-6"/>
+    </svg>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo('#hero .scroll-reveal', {
+    y: 60, opacity: 0, filter: 'blur(4px)'
+  }, {
+    y: 0, opacity: 1, filter: 'blur(0px)',
+    duration: 1.2,
+    stagger: 0.2,
+    ease: 'power3.out',
+    delay: 0.3
+  });
+</script>

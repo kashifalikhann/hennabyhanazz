@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const lang = 'es';
+---
+
+<BaseLayout title="Certificado de Regalo" lang={lang}>
+  <section class="pt-24 md:pt-32 pb-20 md:pb-24 px-6 min-h-screen">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10 md:mb-12">
+        <span class="eyebrow">Regalo</span>
+        <h1 class="font-display text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mt-4">Certificados de Regalo</h1>
+        <p class="text-muted mt-4 max-w-md mx-auto">
+          Regala henna. Una experiencia hermosa entregada en su bandeja de entrada.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-12">
+        {['Estándar', 'Premium', 'VIP'].map((tier, i) => {
+          const prices = [50, 100, 200];
+          const descs = [
+            'Perfecto para un diseño individual.',
+            'Ideal para eventos — hasta 3 invitados.',
+            'La experiencia definitiva — cobertura completa.',
+          ];
+          return (
+            <div class={`rounded-2xl border p-4 md:p-6 ${i === 1 ? 'border-gold bg-gold/5' : 'border-border bg-surface'} relative`}>
+              {i === 1 && (
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-wider bg-gold text-bg px-3 py-1 rounded-full font-medium">
+                  Popular
+                </span>
+              )}
+              <h3 class="font-display text-xl font-bold">{tier}</h3>
+              <p class="text-muted text-sm mt-2">{descs[i]}</p>
+              <p class="font-display text-3xl font-bold text-gold mt-4">€{prices[i]}</p>
+              <form method="POST">
+                <input type="hidden" name="tier" value={tier.toLowerCase()} />
+                <button class="btn-primary w-full justify-center mt-6">
+                  Comprar
+                  <span class="icon-wrap !w-6 !h-6">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  </span>
+                </button>
+              </form>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
