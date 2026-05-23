@@ -102,8 +102,8 @@ const base = import.meta.env.BASE_URL;
           <p class="text-muted text-sm flex-1">{isEs ? 'Sube tu diseño o concepto y recibe una pieza exclusiva' : 'Upload your design concept for a one-of-a-kind piece'}</p>
           <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
             <span class="font-display text-2xl font-bold text-gold">{isEs ? '€100' : '€100'}</span>
-            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs" style="background: var(--color-gold); color: #0A0A0A;">
-              {isEs ? 'Reservar' : 'Book'}
+            <a href={`${base}${isEs ? '/es' : ''}/byod`} class="btn-primary !py-1.5 !px-4 !text-xs" style="background: var(--color-gold); color: #0A0A0A;">
+              {isEs ? 'Subir Diseño' : 'Upload Design'}
               <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
             </a>
           </div>

@@ -34,30 +34,53 @@ const base = import.meta.env.BASE_URL;
     const booking = JSON.parse(localStorage.getItem('hbnb_booking'));
     if (booking) {
       title.textContent = booking.lang === 'es' ? '¡Reserva Confirmada!' : 'Booking Confirmed!';
-      msg.textContent = booking.lang === 'es'
-        ? 'Gracias ' + booking.name + '! Tu reserva está confirmada. Recibirás los detalles por correo.'
-        : 'Thank you ' + booking.name + '! Your booking is confirmed. You\'ll receive details via email.';
+      if (booking.service === 'byod') {
+        msg.innerHTML = booking.lang === 'es'
+          ? 'Gracias ' + booking.name + '! Hanazz revisará tu diseño y te contactará para confirmar. Si tienes alguna pregunta, responde a tu correo de confirmación de Stripe.'
+          : 'Thank you ' + booking.name + '! Hanazz will review your design and reach out to confirm. If you have questions, reply to your Stripe confirmation email.';
+      } else {
+        msg.textContent = booking.lang === 'es'
+          ? 'Gracias ' + booking.name + '! Tu reserva está confirmada. Recibirás los detalles por correo.'
+          : 'Thank you ' + booking.name + '! Your booking is confirmed. You\'ll receive details via email.';
+      }
 
       details.classList.remove('hidden');
+      const isEs = booking.lang === 'es';
+      let byodHtml = '';
+      if (booking.service === 'byod' && booking.designLink) {
+        byodHtml = `
+          <div class="flex justify-between py-2 border-b border-border">
+            <span class="text-muted text-sm">${isEs ? 'Diseño' : 'Design'}</span>
+            <span class="text-sm"><a href="${booking.designLink}" target="_blank" rel="noopener noreferrer" class="text-gold underline hover:no-underline">${isEs ? 'Ver archivo' : 'View file'}</a></span>
+          </div>`;
+        if (booking.notes) {
+          byodHtml += `
+          <div class="py-3 border-b border-border">
+            <span class="text-muted text-sm block">${isEs ? 'Descripción' : 'Description'}</span>
+            <p class="text-sm mt-1 leading-relaxed">${booking.notes}</p>
+          </div>`;
+        }
+      }
       details.innerHTML = `
         <div class="flex justify-between py-2 border-b border-border">
-          <span class="text-muted text-sm">${booking.lang === 'es' ? 'Servicio' : 'Service'}</span>
+          <span class="text-muted text-sm">${isEs ? 'Servicio' : 'Service'}</span>
           <span class="text-sm font-medium">${booking.serviceName}</span>
         </div>
         <div class="flex justify-between py-2 border-b border-border">
-          <span class="text-muted text-sm">${booking.lang === 'es' ? 'Fecha' : 'Date'}</span>
+          <span class="text-muted text-sm">${isEs ? 'Fecha' : 'Date'}</span>
           <span class="text-sm">${booking.date}</span>
         </div>
         <div class="flex justify-between py-2 border-b border-border">
-          <span class="text-muted text-sm">${booking.lang === 'es' ? 'Hora' : 'Time'}</span>
+          <span class="text-muted text-sm">${isEs ? 'Hora' : 'Time'}</span>
           <span class="text-sm">${booking.time}</span>
         </div>
         <div class="flex justify-between py-2 border-b border-border">
           <span class="text-muted text-sm">Email</span>
           <span class="text-sm">${booking.email}</span>
         </div>
+        ${byodHtml}
         <div class="flex justify-between py-2">
-          <span class="text-muted text-sm">${booking.lang === 'es' ? 'Código' : 'Code'}</span>
+          <span class="text-muted text-sm">${isEs ? 'Código' : 'Code'}</span>
           <span class="text-sm font-mono text-gold font-bold">${booking.code}</span>
         </div>
       `;
