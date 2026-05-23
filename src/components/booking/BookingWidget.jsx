@@ -55,9 +55,13 @@ export default function BookingWidget({ lang = 'en' }) {
   const [confirmed, setConfirmed] = useState(null);
   const [consent, setConsent] = useState(false);
 
+  const [loadingServices, setLoadingServices] = useState(true);
+
   useEffect(() => {
+    setLoadingServices(true);
     supabase.from('services').select('*').order('sort_order').then(({ data, error }) => {
       if (!error && data) setServices(data);
+      setLoadingServices(false);
     });
   }, []);
 
@@ -67,7 +71,7 @@ export default function BookingWidget({ lang = 'en' }) {
     if (step === 3 && (!name || !email)) { setError(s.fillDetails); return; }
     if (step === 3 && !consent) { setError(lang === 'en' ? 'Please accept the Privacy Policy' : 'Por favor acepta la Política de Privacidad'); return; }
     setError('');
-    setStep(step + 1);
+    setStep(prev => Math.min(prev + 1, 4));
   };
 
   const submitBooking = async () => {
@@ -147,27 +151,40 @@ export default function BookingWidget({ lang = 'en' }) {
           {step === 1 && (
             <div>
               <h3 className="font-display text-xl font-semibold mb-6">{s.selectService}</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {services.filter(sv => sv.active !== false).map(sv => (
-                  <button
-                    key={sv.id}
-                    onClick={() => { setSelectedService(sv); setError(''); }}
-                    className={`text-left p-6 rounded-xl border transition-all duration-500 ${
-                      selectedService?.id === sv.id
-                        ? 'border-gold bg-gold/5'
-                        : 'border-border bg-surface hover:border-gold/50'
-                    }`}
-                  >
-                    <span className="text-[10px] uppercase tracking-wider text-muted">{sv.category}</span>
-                    <h4 className="font-display font-semibold mt-1">{lang === 'en' ? sv.name_en : sv.name_es}</h4>
-                    <p className="text-sm text-muted mt-1">{lang === 'en' ? sv.description_en : sv.description_es}</p>
-                    <p className="font-display text-lg font-bold text-gold mt-3">€{sv.price}</p>
-                  </button>
-                ))}
-              </div>
-              <div className="flex justify-end mt-8">
-                <button onClick={nextStep} className="btn-primary">{s.next}<span className="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></button>
-              </div>
+              {loadingServices ? (
+                <div className="text-center py-12 text-muted">
+                  <div className="animate-spin w-6 h-6 border-2 border-gold border-t-transparent rounded-full mx-auto mb-3" />
+                  <p className="text-sm">Loading services...</p>
+                </div>
+              ) : services.filter(sv => sv.active !== false).length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-muted text-sm">Services are being set up. Please check back soon or contact us via WhatsApp.</p>
+                </div>
+              ) : (
+                <>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {services.filter(sv => sv.active !== false).map(sv => (
+                      <button
+                        key={sv.id}
+                        onClick={() => { setSelectedService(sv); setError(''); }}
+                        className={`text-left p-6 rounded-xl border transition-all duration-500 ${
+                          selectedService?.id === sv.id
+                            ? 'border-gold bg-gold/5'
+                            : 'border-border bg-surface hover:border-gold/50'
+                        }`}
+                      >
+                        <span className="text-[10px] uppercase tracking-wider text-muted">{sv.category}</span>
+                        <h4 className="font-display font-semibold mt-1">{lang === 'en' ? sv.name_en : sv.name_es}</h4>
+                        <p className="text-sm text-muted mt-1">{lang === 'en' ? sv.description_en : sv.description_es}</p>
+                        <p className="font-display text-lg font-bold text-gold mt-3">€{sv.price}</p>
+                      </button>
+                    ))}
+                  </div>
+                  <div className="flex justify-end mt-8">
+                    <button onClick={nextStep} className="btn-primary">{s.next}<span className="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></button>
+                  </div>
+                </>
+              )}
             </div>
           )}
 

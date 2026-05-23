@@ -9,7 +9,7 @@ const t = (key: string) => isEs ? {
 const base = import.meta.env.BASE_URL;
 ---
 
-<nav id="site-nav" class="fixed top-0 left-0 right-0 z-40 flex justify-center pt-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="padding-top: calc(1rem + env(safe-area-inset-top, 0px))">
+<nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="padding-top: calc(1rem + env(safe-area-inset-top, 0px))">
   <div class="glass flex items-center gap-6 rounded-full px-5 py-2.5 md:px-8 md:py-3 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" id="nav-inner">
     <a href={base} class="font-display text-sm font-semibold tracking-tight whitespace-nowrap">
       <span class="text-gold">✦</span> Hanazz
@@ -55,8 +55,8 @@ const base = import.meta.env.BASE_URL;
   </div>
 </nav>
 
-<div id="mobile-overlay" class="fixed inset-0 z-30 bg-black/80 backdrop-blur-3xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-  <div class="flex flex-col items-center gap-8 text-2xl font-display">
+<div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/80 backdrop-blur-3xl flex items-start justify-center pt-24 opacity-0 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
+  <div class="flex flex-col items-center gap-8 text-2xl font-display mt-8">
     <a href={`${base}${isEs ? '/es' : ''}/#gallery`} class="translate-y-12 opacity-0 transition-all duration-700 delay-100 mobile-link">{t('nav.gallery')}</a>
     <a href={`${base}${isEs ? '/es' : ''}/#services`} class="translate-y-12 opacity-0 transition-all duration-700 delay-150 mobile-link">{t('nav.services')}</a>
     <a href={`${base}${isEs ? '/es' : ''}/#about`} class="translate-y-12 opacity-0 transition-all duration-700 delay-200 mobile-link">{t('nav.about')}</a>
