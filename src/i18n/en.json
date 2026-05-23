@@ -1,4 +1,4 @@
-export const en = {
+{
   nav: { gallery: 'Gallery', services: 'Services', book: 'Book', about: 'About', contact: 'Contact' },
   hero: { headline: 'Henna By Hanazz', subhead: "Barcelona's Premier Henna Artistry", cta: 'Book Your Experience' },
   about: { badge: 'The Artist', para1: 'Every henna design tells a story. Based in the heart of Barcelona, Hanazz brings centuries of tradition into every intricate pattern.', para2: 'From intimate gatherings to grand celebrations, each design is a unique expression of beauty and culture.' },

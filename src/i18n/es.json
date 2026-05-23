@@ -1,4 +1,4 @@
-export const es = {
+{
   nav: { gallery: 'Galería', services: 'Servicios', book: 'Reservar', about: 'Sobre Mí', contact: 'Contacto' },
   hero: { headline: 'Henna By Hanazz', subhead: 'La mejor henna artesanal en Barcelona', cta: 'Reserva tu Experiencia' },
   about: { badge: 'La Artista', para1: 'Cada diseño de henna cuenta una historia. Desde el corazón de Barcelona, Hanazz transforma la tradición en arte.', para2: 'Desde reuniones íntimas hasta grandes celebraciones, cada diseño es una expresión única de belleza y cultura.' },

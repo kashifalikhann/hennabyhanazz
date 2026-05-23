@@ -11,6 +11,11 @@ interface ImportMetaEnv {
   readonly PUBLIC_FB_PIXEL_ID?: string;
   readonly CONTACT_EMAIL: string;
   readonly SITE_URL: string;
+  readonly PUBLIC_SITE_URL: string;
+  readonly RESEND_API_KEY: string;
+  readonly FROM_EMAIL: string;
+  readonly INSTAGRAM_ACCESS_TOKEN: string;
+  readonly INSTAGRAM_USER_ID: string;
 }
 
 interface ImportMeta {

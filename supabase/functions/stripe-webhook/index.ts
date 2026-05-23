@@ -2,6 +2,7 @@ import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const corsHeaders = {
+  // TODO: Restrict to specific production domain(s) instead of '*'
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -66,12 +67,33 @@ serve(async (req) => {
 
     const event = await verifyStripeSignature(payload, signature, webhookSecret)
 
+    const tMatch = signature.match(/(?:^|,)t=(\d+)/)
+    if (tMatch) {
+      const eventTimeMs = parseInt(tMatch[1], 10) * 1000
+      if (Date.now() - eventTimeMs > 300_000) {
+        return new Response(JSON.stringify({ error: 'Event timestamp too old' }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        })
+      }
+    }
+
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object
         const metadata = session.metadata || {}
 
         if (metadata.type === 'booking') {
+          const { data: existingBooking } = await supabase
+            .from('bookings')
+            .select('id')
+            .eq('stripe_session_id', session.id)
+            .maybeSingle()
+          if (existingBooking) {
+            console.log('Duplicate booking event, skipping')
+            break
+          }
+
           const depositAmount = metadata.deposit_amount && metadata.deposit_amount !== '0'
             ? parseFloat(metadata.deposit_amount)
             : null
@@ -96,6 +118,16 @@ serve(async (req) => {
             throw bookingError
           }
         } else if (metadata.type === 'gift') {
+          const { data: existingGift } = await supabase
+            .from('gift_certificates')
+            .select('id')
+            .eq('stripe_session_id', session.id)
+            .maybeSingle()
+          if (existingGift) {
+            console.log('Duplicate gift event, skipping')
+            break
+          }
+
           const { error: giftError } = await supabase.from('gift_certificates').insert({
             buyer_name: metadata.buyer_name,
             buyer_email: metadata.buyer_email,
