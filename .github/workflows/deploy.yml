@@ -31,10 +31,10 @@ jobs:
           PUBLIC_STRIPE_KEY: ${{ secrets.PUBLIC_STRIPE_KEY }}
           PUBLIC_GTM_ID: ${{ secrets.PUBLIC_GTM_ID }}
           PUBLIC_FB_PIXEL_ID: ${{ secrets.PUBLIC_FB_PIXEL_ID }}
-          PUBLIC_CONTACT_EMAIL: info@smgtec.es
+          PUBLIC_CONTACT_EMAIL: info@hennabyhanazz.com
           PUBLIC_WHATSAPP_NUMBER: 34655729113
           PUBLIC_INSTAGRAM_URL: https://www.instagram.com/hennabyhanazz/
-          CONTACT_EMAIL: info@smgtec.es
+          CONTACT_EMAIL: info@hennabyhanazz.com
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
