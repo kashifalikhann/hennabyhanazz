@@ -30,8 +30,9 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
 
-      <div class="double-bezel group cursor-pointer">
-        <div class="double-bezel-inner bg-surface p-8 h-full flex flex-col">
+      <div class="double-bezel group cursor-pointer relative overflow-hidden">
+        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
+        <div class="double-bezel-inner bg-surface p-4 md:p-6 lg:p-8 h-full flex flex-col">
           <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Pase y Pida' : 'Walk-in'}</span>
           <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Diseño de Brazo' : 'Arm Design'}</h3>
           <p class="text-muted text-sm flex-1">{isEs ? 'Diseño personalizado hasta el codo' : 'Custom half-arm design'}</p>
