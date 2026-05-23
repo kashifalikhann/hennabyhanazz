@@ -12,9 +12,11 @@ const t = {
     processing: 'Processing...', success: 'Booking Confirmed!',
     successMsg: 'Check your email for confirmation details.',
     error: 'Something went wrong. Please try again.',
-    bookingCode: 'Your booking code', payWithCard: 'You will be redirected to Stripe to complete payment.',
+    bookingCode: 'Your booking code',     payWithCard: 'You will be redirected to Stripe to complete payment.',
     noService: 'Please select a service', fillDetails: 'Please fill in all required fields',
     selectDate: 'Please select a date and time', from: 'from',
+    privacyConsent: 'I have read and agree to the',
+    privacyPolicy: 'Privacy Policy',
   },
   es: {
     step: 'Paso', of: 'de', selectService: 'Selecciona un Servicio',
@@ -26,9 +28,11 @@ const t = {
     processing: 'Procesando...', success: '¡Reserva Confirmada!',
     successMsg: 'Revisa tu correo para los detalles de confirmación.',
     error: 'Algo salió mal. Intenta de nuevo.',
-    bookingCode: 'Tu código de reserva', payWithCard: 'Serás redirigido a Stripe para completar el pago.',
+    bookingCode: 'Tu código de reserva',     payWithCard: 'Serás redirigido a Stripe para completar el pago.',
     noService: 'Por favor selecciona un servicio', fillDetails: 'Por favor completa todos los campos requeridos',
     selectDate: 'Por favor selecciona una fecha y hora', from: 'desde',
+    privacyConsent: 'He leído y acepto la',
+    privacyPolicy: 'Política de Privacidad',
   }
 };
 
@@ -49,6 +53,7 @@ export default function BookingWidget({ lang = 'en' }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [confirmed, setConfirmed] = useState(null);
+  const [consent, setConsent] = useState(false);
 
   useEffect(() => {
     supabase.from('services').select('*').order('sort_order').then(({ data, error }) => {
@@ -60,6 +65,7 @@ export default function BookingWidget({ lang = 'en' }) {
     if (step === 1 && !selectedService) { setError(s.noService); return; }
     if (step === 2 && (!date || !time)) { setError(s.selectDate); return; }
     if (step === 3 && (!name || !email)) { setError(s.fillDetails); return; }
+    if (step === 3 && !consent) { setError(lang === 'en' ? 'Please accept the Privacy Policy' : 'Por favor acepta la Política de Privacidad'); return; }
     setError('');
     setStep(step + 1);
   };
@@ -215,6 +221,12 @@ export default function BookingWidget({ lang = 'en' }) {
                   className="w-full bg-surface border border-border rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-gold transition-colors" />
                 <textarea placeholder={s.notes} value={notes} onChange={e => setNotes(e.target.value)} rows={3}
                   className="w-full bg-surface border border-border rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-gold transition-colors resize-none" />
+                <label className="flex items-start gap-2 cursor-pointer pt-2">
+                  <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-0.5 shrink-0 accent-gold" />
+                  <span className="text-xs text-muted/70 leading-relaxed">
+                    {s.privacyConsent} <a href={lang === 'es' ? '/es/privacidad' : '/privacy'} target="_blank" rel="noopener noreferrer" className="text-gold underline hover:no-underline">{s.privacyPolicy}</a>.
+                  </span>
+                </label>
               </div>
               <div className="flex justify-between mt-8">
                 <button onClick={() => setStep(2)} className="btn-ghost">{s.back}</button>

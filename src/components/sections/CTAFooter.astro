@@ -10,7 +10,10 @@ const base = import.meta.env.BASE_URL;
       {isEs ? '¿Listo para tu Experiencia de Henna?' : 'Ready for Your Henna Experience?'}
     </h2>
     <p class="mt-4 md:mt-6 text-base md:text-lg leading-relaxed" style="color: rgba(10,10,10,0.7);">
-      {isEs ? 'Reserva tu cita hoy y descubre el arte de la henna.' : 'Book your appointment today and discover the art of henna.'}
+      {isEs ? 'Reserva tu cita hoy y descubre la henna 100% natural, libre de PPD.' : 'Book your appointment today and discover 100% natural, PPD-free henna.'}
+    </p>
+    <p class="mt-3 text-xs tracking-wider uppercase" style="color: rgba(10,10,10,0.5);">
+      100% Natural · PPD-Free · Lahore Heritage · Barcelona
     </p>
     <a href={`${base}${isEs ? '/es' : ''}/book`} class="inline-flex items-center gap-3 rounded-full px-6 md:px-8 py-3 md:py-4 font-body font-medium mt-8 md:mt-10 transition-all duration-600 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-[0.98]" style="background: #0A0A0A; color: var(--color-gold);">
       {isEs ? 'Reserva Ahora' : 'Book Now'}
@@ -29,7 +32,7 @@ const base = import.meta.env.BASE_URL;
           <span class="text-gold">✦</span> Henna By Hanazz
         </a>
         <p class="text-muted text-sm mt-3 max-w-sm leading-relaxed">
-          {isEs ? 'Henna artesanal premium en Barcelona. Cada diseño cuenta una historia.' : 'Premium henna artistry in Barcelona. Every design tells a story.'}
+          {isEs ? 'Henna 100% natural, libre de PPD. Arte con herencia de Lahore en Barcelona.' : '100% natural, PPD-free henna artistry. Lahore-born tradition in Barcelona.'}
         </p>
       </div>
 
@@ -47,8 +50,17 @@ const base = import.meta.env.BASE_URL;
         <h4 class="font-display font-semibold text-sm mb-4">{isEs ? 'Contacto' : 'Contact'}</h4>
         <div class="space-y-2 text-sm text-muted">
           <a href="https://www.instagram.com/hennabyhanazz/" target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">Instagram</a>
-          <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">WhatsApp</a>
+          <a href="https://wa.me/34655729113" target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">WhatsApp</a>
           <a href="mailto:info@smgtec.es" class="block hover:text-text transition-colors">info@smgtec.es</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-display font-semibold text-sm mb-4">{isEs ? 'Legal' : 'Legal'}</h4>
+        <div class="space-y-2 text-sm text-muted">
+          <a href={`${base}${isEs ? '/es/privacidad' : '/privacy'}`} class="block hover:text-text transition-colors">{isEs ? 'Privacidad' : 'Privacy'}</a>
+          <a href={`${base}${isEs ? '/es/cookies' : '/cookies'}`} class="block hover:text-text transition-colors">{isEs ? 'Cookies' : 'Cookies'}</a>
+          <a href={`${base}${isEs ? '/es/aviso-legal' : '/legal'}`} class="block hover:text-text transition-colors">{isEs ? 'Aviso Legal' : 'Legal Notice'}</a>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Nav from '../components/ui/Nav.astro';
 import WhatsAppButton from '../components/ui/WhatsAppButton.astro';
 import BackToTop from '../components/ui/BackToTop.astro';
 import Footer from '../components/sections/CTAFooter.astro';
+import CookieConsent from '../components/ui/CookieConsent.astro';
 
 export interface Props {
   title: string;
@@ -55,30 +56,35 @@ const altLangLabel = isEs ? 'English' : 'Español';
   <link rel="manifest" href="/hennabyhanazz/manifest.json" />
   <meta name="theme-color" content="#0A0A0A" />
 
-  {import.meta.env.PUBLIC_GTM_ID && (
-    <>
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GTM_ID}`}></script>
-      <script set:html={`
+  <script set:html={`
+    window._gtmId = ${JSON.stringify(import.meta.env.PUBLIC_GTM_ID || '')};
+    window._fbPixelId = ${JSON.stringify(import.meta.env.PUBLIC_FB_PIXEL_ID || '')};
+    function loadConsentScripts() {
+      if (window._gtmId) {
+        var g = document.createElement('script'); g.async = true;
+        g.src = 'https://www.googletagmanager.com/gtag/js?id=' + window._gtmId;
+        document.head.appendChild(g);
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
         gtag('js', new Date());
-        gtag('config', '${import.meta.env.PUBLIC_GTM_ID}');
-      `} />
-    </>
-  )}
-
-  {import.meta.env.PUBLIC_FB_PIXEL_ID && (
-    <script set:html={`
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '${import.meta.env.PUBLIC_FB_PIXEL_ID}');
-      fbq('track', 'PageView');
-    `} />
-  )}
+        gtag('config', window._gtmId);
+      }
+      if (window._fbPixelId) {
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', window._fbPixelId);
+        fbq('track', 'PageView');
+      }
+    }
+    var consent = localStorage.getItem('cookie-consent');
+    if (consent === 'accepted') { loadConsentScripts(); }
+    window.addEventListener('consent-granted', loadConsentScripts);
+  `} />
 </head>
 <body>
   <div class="noise-overlay" />
@@ -91,6 +97,7 @@ const altLangLabel = isEs ? 'English' : 'Español';
 
   <WhatsAppButton lang={lang} />
   <BackToTop lang={lang} />
+  <CookieConsent lang={lang} />
 
   <script>
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const lang = 'en';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Cookie Policy" lang={lang}>
+  <div class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
+    <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight mb-8">Cookie Policy</h1>
+    <p class="text-sm text-muted mb-12">Last updated: May 2026</p>
+
+    <div class="space-y-8 text-muted leading-relaxed">
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">1. What Are Cookies</h2>
+        <p>Cookies are small text files stored on your device when you visit a website. They help the site function properly, remember preferences, and provide analytics to improve your experience.</p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">2. Cookies We Use</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="text-left py-3 pr-4 font-semibold text-text">Cookie / Technology</th>
+                <th class="text-left py-3 pr-4 font-semibold text-text">Purpose</th>
+                <th class="text-left py-3 pr-4 font-semibold text-text">Type</th>
+                <th class="text-left py-3 font-semibold text-text">Duration</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              <tr>
+                <td class="py-3 pr-4">localStorage (theme)</td>
+                <td class="py-3 pr-4">Remembers your dark/light mode preference</td>
+                <td class="py-3 pr-4">Necessary</td>
+                <td class="py-3">Persistent</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4">localStorage (cookie-consent)</td>
+                <td class="py-3 pr-4">Stores your cookie consent choice</td>
+                <td class="py-3 pr-4">Necessary</td>
+                <td class="py-3">1 year</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4">Google Analytics (_ga, _gid)</td>
+                <td class="py-3 pr-4">Anonymized site usage analytics</td>
+                <td class="py-3 pr-4">Marketing</td>
+                <td class="py-3">14 months</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4">Facebook Pixel (_fbp)</td>
+                <td class="py-3 pr-4">Ad performance measurement</td>
+                <td class="py-3 pr-4">Marketing</td>
+                <td class="py-3">3 months</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">3. How We Use Cookies</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Necessary cookies</strong> — enable core functionality like theme preference and consent storage. These do not require consent.</li>
+          <li><strong>Marketing cookies</strong> — Google Analytics and Facebook Pixel help us understand traffic and improve our marketing. These are only loaded with your explicit consent.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">4. Managing Cookies</h2>
+        <p>When you first visit our site, you will see a cookie banner. You can choose to "Accept All" or "Necessary Only" (which blocks Google Analytics and Facebook Pixel).</p>
+        <p class="mt-2">You can also manage cookies through your browser settings at any time. Note that blocking necessary cookies may affect site functionality.</p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">5. Changes</h2>
+        <p>We may update this cookie policy. Any changes will be posted here with an updated revision date.</p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">6. Contact</h2>
+        <p>For questions about this policy, contact us at <a href="mailto:info@smgtec.es" class="text-gold underline">info@smgtec.es</a>.</p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

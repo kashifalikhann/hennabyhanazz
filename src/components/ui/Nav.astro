@@ -22,6 +22,8 @@ const base = import.meta.env.BASE_URL;
       <a href={`${base}${isEs ? '/es' : ''}/gallery`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden lg:inline">{t('nav.gallery')}</a>
       <a href={`${base}${isEs ? '/es' : ''}/gift-certificate`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden lg:inline">{t('nav.gifts')}</a>
       <a href={`${base}${isEs ? '/es' : ''}/my-booking`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden lg:inline">{t('nav.mybooking')}</a>
+      <a href={`${base}${isEs ? '/es/privacidad' : '/privacy'}`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden xl:inline">{isEs ? 'Privacidad' : 'Privacy'}</a>
+      <a href={`${base}${isEs ? '/es/aviso-legal' : '/legal'}`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden xl:inline">{isEs ? 'Aviso Legal' : 'Legal'}</a>
       <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs whitespace-nowrap">
         {t('nav.book')}
         <span class="icon-wrap !w-6 !h-6">
@@ -61,7 +63,9 @@ const base = import.meta.env.BASE_URL;
     <a href={`${base}${isEs ? '/es' : ''}/gallery`} class="translate-y-12 opacity-0 transition-all duration-700 delay-250 mobile-link">{t('nav.gallery')}</a>
     <a href={`${base}${isEs ? '/es' : ''}/gift-certificate`} class="translate-y-12 opacity-0 transition-all duration-700 delay-300 mobile-link">{t('nav.gifts')}</a>
     <a href={`${base}${isEs ? '/es' : ''}/my-booking`} class="translate-y-12 opacity-0 transition-all duration-700 delay-350 mobile-link">{t('nav.mybooking')}</a>
-    <a href={`${base}${isEs ? '/es' : ''}/book`} class="translate-y-12 opacity-0 transition-all duration-700 delay-400 mobile-link">{t('nav.book')}</a>
+    <a href={`${base}${isEs ? '/es/privacidad' : '/privacy'}`} class="translate-y-12 opacity-0 transition-all duration-700 delay-400 mobile-link">{isEs ? 'Privacidad' : 'Privacy'}</a>
+    <a href={`${base}${isEs ? '/es/aviso-legal' : '/legal'}`} class="translate-y-12 opacity-0 transition-all duration-700 delay-[450ms] mobile-link">{isEs ? 'Aviso Legal' : 'Legal'}</a>
+    <a href={`${base}${isEs ? '/es' : ''}/book`} class="translate-y-12 opacity-0 transition-all duration-700 delay-500 mobile-link">{t('nav.book')}</a>
   </div>
 </div>
 
@@ -125,7 +129,7 @@ const base = import.meta.env.BASE_URL;
 
   langToggle?.addEventListener('click', () => {
     const path = window.location.pathname;
-    const base = '/hennabyhanazz';
+    const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     const esPrefix = base + '/es';
     if (path.startsWith(esPrefix)) {
       window.location.href = path.replace(esPrefix, base) || base;

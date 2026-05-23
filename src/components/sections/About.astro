@@ -1,4 +1,5 @@
 ---
+import { images } from '../../lib/images';
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
 ---
@@ -9,31 +10,41 @@ const isEs = lang === 'es';
       <div class="space-y-6">
         <span class="eyebrow">{isEs ? 'La Artista' : 'The Artist'}</span>
         <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tight">
-          {isEs ? 'Cada diseño cuenta una historia' : 'Every design tells a story'}
+          {isEs ? 'Henna con herencia de Lahore' : 'Henna with Lahore heritage'}
         </h2>
         <div class="w-12 h-0.5 bg-gold"></div>
         <p class="text-muted leading-relaxed text-lg">
           {isEs
-            ? 'Hanazz transforma la henna en arte. Con años de experiencia y una profunda conexión con la tradición, cada diseño es una pieza única de belleza y significado cultural.'
-            : 'Hanazz transforms henna into art. With years of mastery and a deep connection to tradition, every design is a unique piece of beauty and cultural meaning.'}
+            ? 'Hanazz, originaria de Lahore, Pakistan, aporta 18 anos de maestria en henna a Barcelona. Formada en la rica tradicion Mughal del arte de la mehndi, ha creado mas de 500 disenos — desde intrincados patrones nupciales hasta piezas contemporaneas minimalistas.'
+            : 'Hanazz, from Lahore, Pakistan, brings 18 years of henna mastery to Barcelona. Trained in the rich Mughal tradition of mehndi art, she has created over 500 designs — from intricate bridal patterns to contemporary minimalist pieces.'}
         </p>
         <p class="text-muted leading-relaxed">
           {isEs
-            ? 'Desde bodas y eventos hasta sesiones espontáneas, cada aplicación es una experiencia meditativa de creatividad y conexión.'
-            : 'From weddings and events to spontaneous walk-in sessions, every application is a meditative experience of creativity and connection.'}
+            ? 'Cada diseno utiliza henna 100% natural, libre de PPD y aditivos quimicos — una tradicion que se remonta a la corte Mughal, donde la henna alcanzo su maxima expresion artistica.'
+            : 'Every design uses 100% natural henna, free from PPD and chemical additives — a tradition that traces back to the Mughal court, where henna reached its highest artistic expression.'}
+        </p>
+        <p class="text-muted leading-relaxed italic text-sm border-l-2 border-gold/30 pl-4">
+          {isEs
+            ? '"La henna no tiene color hasta que llega al Hindustan" — proverbio Mughal del siglo XVII'
+            : '"Henna has no colour until it comes to Hindustan" — 17th-century Mughal proverb'}
         </p>
       </div>
 
       <div class="relative">
         <div class="double-bezel">
-          <div class="double-bezel-inner aspect-[3/4] bg-surface flex items-center justify-center">
-            <div class="text-center p-8">
-              <div class="text-6xl mb-4">🖐️</div>
-              <p class="text-muted text-sm italic">{isEs ? 'Foto de Hanazz próximamente' : 'Hanazz photo coming soon'}</p>
-            </div>
+          <div class="double-bezel-inner aspect-[3/4] overflow-hidden">
+            <img
+              src={images.about.src}
+              alt={images.about.alt}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
         <div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-gold/10 -z-10 blur-3xl"></div>
+        <p class="text-[10px] text-muted/50 text-right mt-2">
+          {isEs ? 'Foto por' : 'Photo by'} <a href={images.about.creditUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-gold transition-colors">{images.about.credit}</a> {isEs ? 'en Pexels' : 'on Pexels'}
+        </p>
       </div>
     </div>
   </div>

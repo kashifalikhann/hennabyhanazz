@@ -1,0 +1,89 @@
+---
+const { lang = 'en' } = Astro.props;
+const isEs = lang === 'es';
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="py-20 md:py-32 px-6">
+  <div class="max-w-2xl mx-auto text-center">
+    <span class="eyebrow">{isEs ? 'Recurso Gratuito' : 'Free Resource'}</span>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-4">
+      {isEs ? 'Descarga tu Guia de Cuidado de Henna' : 'Get Your Henna Aftercare Guide'}
+    </h2>
+    <p class="text-muted leading-relaxed mt-4 max-w-lg mx-auto">
+      {isEs
+        ? 'Aprende como hacer que tu henna dure mas y oscurezca al maximo. Consejos de una artista con 18 anos de experiencia.'
+        : 'Learn how to make your henna last longer and stain darker. Tips from an artist with 18 years of experience.'}
+    </p>
+
+    <form class="mt-8 max-w-md mx-auto" id="lead-magnet-form">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder={isEs ? 'Tu correo electronico' : 'Your email address'}
+          class="flex-1 px-5 py-3 rounded-full bg-surface border border-border text-text placeholder:text-muted/50 focus:outline-none focus:border-gold transition-colors font-body text-sm"
+        />
+        <button
+          type="submit"
+          class="btn-primary whitespace-nowrap"
+          id="lead-magnet-submit"
+        >
+          <span class="btn-text">{isEs ? 'Enviar Guia' : 'Send Guide'}</span>
+          <span class="btn-loading hidden">
+            <svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"/><path d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" fill="currentColor" class="opacity-75"/></svg>
+          </span>
+        </button>
+      </div>
+      <label class="flex items-start gap-2 mt-4 cursor-pointer">
+        <input type="checkbox" name="consent" required class="mt-1 shrink-0 accent-gold" />
+        <span class="text-xs text-muted/70 leading-relaxed">
+          {isEs
+            ? 'He leído y acepto la <a href="' + base + '/es/privacy" class="text-gold underline hover:no-underline">Política de Privacidad</a> y acepto recibir comunicaciones por correo electrónico.'
+            : 'I have read and agree to the <a href="' + base + '/privacy" class="text-gold underline hover:no-underline">Privacy Policy</a> and consent to receiving email communications.'}
+        </span>
+      </label>
+    </form>
+
+    <div id="lead-magnet-success" class="hidden mt-8 p-6 rounded-2xl bg-green-900/20 border border-green-700/30">
+      <p class="text-green-400 font-medium">
+        {isEs ? 'Gracias Revisa tu correo para la guia' : 'Thanks! Check your email for the guide.'}
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('lead-magnet-form');
+  const submitBtn = document.getElementById('lead-magnet-submit');
+  const btnText = submitBtn?.querySelector('.btn-text');
+  const btnLoading = submitBtn?.querySelector('.btn-loading');
+  const successMsg = document.getElementById('lead-magnet-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    const consent = form.consent?.checked;
+    if (!consent) return;
+
+    btnText?.classList.add('hidden');
+    btnLoading?.classList.remove('hidden');
+    submitBtn.disabled = true;
+
+    try {
+      await fetch('https://tzeawzqvxdicnpuymsqi.supabase.co/functions/v1/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      form.classList.add('hidden');
+      successMsg?.classList.remove('hidden');
+    } catch {
+      btnText?.classList.remove('hidden');
+      btnLoading?.classList.add('hidden');
+      submitBtn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>

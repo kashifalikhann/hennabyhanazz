@@ -14,7 +14,8 @@ const base = import.meta.env.BASE_URL;
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-      <div class="double-bezel group cursor-pointer">
+      <div class="double-bezel group cursor-pointer relative overflow-hidden">
+        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
         <div class="double-bezel-inner bg-surface p-4 md:p-6 lg:p-8 h-full flex flex-col">
           <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Pase y Pida' : 'Walk-in'}</span>
           <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Diseño de Mano' : 'Hand Design'}</h3>
@@ -44,19 +45,24 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
 
-      <div class="double-bezel group cursor-pointer">
+      <div class="double-bezel group cursor-pointer relative overflow-hidden">
+        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
         <div class="double-bezel-inner bg-surface p-8 h-full flex flex-col">
           <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Eventos' : 'Events'}</span>
           <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Henna para Eventos' : 'Event Henna'}</h3>
           <p class="text-muted text-sm flex-1">{isEs ? 'Henna en vivo para bodas, fiestas y eventos corporativos' : 'Live henna for weddings, parties & corporate events'}</p>
           <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">{isEs ? 'Desde €150' : 'From €150'}</span>
-            <span class="btn-ghost !py-1.5 !px-4 !text-xs">{isEs ? 'Consultar' : 'Inquire'}</span>
+            <span class="font-display text-2xl font-bold text-gold">€150</span>
+            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs">
+              {isEs ? 'Reservar' : 'Book'}
+              <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="double-bezel group cursor-pointer">
+      <div class="double-bezel group cursor-pointer relative overflow-hidden">
+        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
         <div class="double-bezel-inner bg-surface p-8 h-full flex flex-col">
           <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Clases' : 'Classes'}</span>
           <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Taller de Henna' : 'Henna Workshop'}</h3>
@@ -71,28 +77,33 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
 
-      <div class="double-bezel group cursor-pointer">
+      <div class="double-bezel group cursor-pointer relative overflow-hidden">
+        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
         <div class="double-bezel-inner bg-surface p-8 h-full flex flex-col">
           <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Personalizado' : 'Custom'}</span>
           <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Diseño Personalizado' : 'Custom Design'}</h3>
           <p class="text-muted text-sm flex-1">{isEs ? 'Describe tu visión y Hanazz la hará realidad' : 'Describe your vision and Hanazz brings it to life'}</p>
           <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">{isEs ? 'Desde €60' : 'From €60'}</span>
-            <span class="btn-ghost !py-1.5 !px-4 !text-xs">{isEs ? 'Consultar' : 'Inquire'}</span>
+            <span class="font-display text-2xl font-bold text-gold">{isEs ? '€60' : '€60'}</span>
+            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs">
+              {isEs ? 'Reservar' : 'Book'}
+              <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+            </a>
           </div>
         </div>
       </div>
 
       <div class="double-bezel group cursor-pointer relative overflow-hidden" style="border-color: var(--color-gold);">
         <div class="absolute top-3 right-3 bg-gold text-bg text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">{isEs ? 'Premium' : 'Premium'}</div>
+        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
         <div class="double-bezel-inner bg-surface p-8 h-full flex flex-col">
           <span class="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold mb-2">BYOD</span>
           <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Trae tu Propio Diseño' : 'Bring Your Own Design'}</h3>
           <p class="text-muted text-sm flex-1">{isEs ? 'Sube tu diseño o concepto y recibe una pieza exclusiva' : 'Upload your design concept for a one-of-a-kind piece'}</p>
           <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">{isEs ? 'Desde €100' : 'From €100'}</span>
-            <span class="btn-primary !py-1.5 !px-4 !text-xs" style="background: var(--color-gold); color: #0A0A0A;">
-              {isEs ? 'Consultar' : 'Inquire'}
+            <span class="font-display text-2xl font-bold text-gold">{isEs ? '€100' : '€100'}</span>
+            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs" style="background: var(--color-gold); color: #0A0A0A;">
+              {isEs ? 'Reservar' : 'Book'}
               <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
             </a>
           </div>

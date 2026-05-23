@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
+import { images } from '../../lib/images';
 
 export default function InstagramFeed({ lang = 'en' }) {
   const [posts, setPosts] = useState([]);
@@ -47,8 +48,27 @@ export default function InstagramFeed({ lang = 'en' }) {
 
   if (!posts.length) {
     return (
-      <div className="text-center py-12">
-        <p className="text-muted">{lang === 'es' ? 'No hay publicaciones aún' : 'No posts yet'}</p>
+      <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {images.gallery.map((img, i) => (
+            <div key={i} className="group relative aspect-square rounded-xl overflow-hidden bg-surface">
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/50 to-transparent">
+                <p className="text-[9px] text-white/60">
+                  {lang === 'es' ? 'Foto por' : 'Photo by'} <a href={img.creditUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-white/90 transition-colors">{img.credit}</a>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="text-center text-xs text-muted mt-4">
+          {lang === 'es' ? 'Fotos de muestra — las fotos reales de Hanazz llegarán pronto' : 'Sample photos — Hanazz\'s actual work photos coming soon'}
+        </p>
       </div>
     );
   }
