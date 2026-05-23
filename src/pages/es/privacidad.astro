@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const lang = 'es';
 const base = import.meta.env.BASE_URL;
+const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
 ---
 
 <BaseLayout title="Política de Privacidad" lang={lang}>
@@ -13,7 +14,7 @@ const base = import.meta.env.BASE_URL;
       <section>
         <h2 class="font-display text-xl font-semibold text-text mb-3">1. Quiénes Somos</h2>
         <p>Henna By Hanazz es un servicio de arte de henna con sede en Barcelona, España. Esta política explica cómo recopilamos, usamos y protegemos tus datos personales.</p>
-        <p class="mt-2">Contacto: <a href="mailto:info@smgtec.es" class="text-gold underline">info@smgtec.es</a></p>
+        <p class="mt-2">Contacto: <a href={`mailto:${email}`} class="text-gold underline">{email}</a></p>
       </section>
 
       <section>
@@ -65,7 +66,7 @@ const base = import.meta.env.BASE_URL;
           <li><strong>Oposición</strong> — oponerte al tratamiento basado en interés legítimo</li>
           <li><strong>Retirar el consentimiento</strong> — en cualquier momento</li>
         </ul>
-        <p class="mt-3">Para ejercer estos derechos, escríbenos a <a href="mailto:info@smgtec.es" class="text-gold underline">info@smgtec.es</a>. Responderemos en un plazo de 30 días.</p>
+        <p class="mt-3">Para ejercer estos derechos, escríbenos a <a href={`mailto:${email}`} class="text-gold underline">{email}</a>. Responderemos en un plazo de 30 días.</p>
       </section>
 
       <section>

@@ -2,6 +2,9 @@
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
 const base = import.meta.env.BASE_URL;
+const whatsapp = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
+const instagram = import.meta.env.PUBLIC_INSTAGRAM_URL;
+const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
 ---
 
 <section id="cta" class="py-20 md:py-32 lg:py-40 px-6" style="background: var(--color-gold);">
@@ -49,9 +52,9 @@ const base = import.meta.env.BASE_URL;
       <div>
         <h4 class="font-display font-semibold text-sm mb-4">{isEs ? 'Contacto' : 'Contact'}</h4>
         <div class="space-y-2 text-sm text-muted">
-          <a href="https://www.instagram.com/hennabyhanazz/" target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">Instagram</a>
-          <a href="https://wa.me/34655729113" target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">WhatsApp</a>
-          <a href="mailto:info@smgtec.es" class="block hover:text-text transition-colors">info@smgtec.es</a>
+          <a href={instagram} target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">Instagram</a>
+          <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noopener noreferrer" class="block hover:text-text transition-colors">WhatsApp</a>
+          <a href={`mailto:${email}`} class="block hover:text-text transition-colors">{email}</a>
         </div>
       </div>
 

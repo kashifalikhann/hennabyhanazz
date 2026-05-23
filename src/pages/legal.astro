@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const lang = 'en';
 const base = import.meta.env.BASE_URL;
+const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
 ---
 
 <BaseLayout title="Legal Notice" lang={lang}>
@@ -15,7 +16,7 @@ const base = import.meta.env.BASE_URL;
         <p>In compliance with Law 34/2002 on Information Society Services and Electronic Commerce (LSSI), we provide the following information:</p>
         <ul class="list-none space-y-1 mt-3">
           <li><strong>Business name:</strong> Henna By Hanazz</li>
-          <li><strong>Contact email:</strong> <a href="mailto:info@smgtec.es" class="text-gold underline">info@smgtec.es</a></li>
+          <li><strong>Contact email:</strong> <a href={`mailto:${email}`} class="text-gold underline">{email}</a></li>
           <li><strong>Location:</strong> Barcelona, Spain</li>
         </ul>
       </section>

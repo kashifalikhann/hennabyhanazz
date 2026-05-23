@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const lang = 'es';
 const base = import.meta.env.BASE_URL;
+const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
 ---
 
 <BaseLayout title="Aviso Legal" lang={lang}>
@@ -15,7 +16,7 @@ const base = import.meta.env.BASE_URL;
         <p>En cumplimiento de la Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI), facilitamos la siguiente información:</p>
         <ul class="list-none space-y-1 mt-3">
           <li><strong>Nombre comercial:</strong> Henna By Hanazz</li>
-          <li><strong>Correo electrónico:</strong> <a href="mailto:info@smgtec.es" class="text-gold underline">info@smgtec.es</a></li>
+          <li><strong>Correo electrónico:</strong> <a href={`mailto:${email}`} class="text-gold underline">{email}</a></li>
           <li><strong>Ubicación:</strong> Barcelona, España</li>
         </ul>
       </section>

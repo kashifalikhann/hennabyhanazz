@@ -3,6 +3,7 @@ import InstagramFeed from '../gallery/InstagramFeed.jsx';
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
 const base = import.meta.env.BASE_URL;
+const instagram = import.meta.env.PUBLIC_INSTAGRAM_URL;
 ---
 
 <section id="gallery" class="py-20 md:py-32 lg:py-40 px-6">
@@ -18,7 +19,7 @@ const base = import.meta.env.BASE_URL;
 
     <div class="text-center mt-8">
       <a
-        href="https://www.instagram.com/hennabyhanazz/"
+        href={instagram}
         target="_blank"
         rel="noopener noreferrer"
         class="btn-ghost"

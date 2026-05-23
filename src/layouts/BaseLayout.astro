@@ -16,7 +16,11 @@ export interface Props {
 const { title, description, lang = 'en', ogImage } = Astro.props;
 const isEs = lang === 'es';
 const path = isEs ? Astro.url.pathname.replace(/^\/es/, '') || '/' : Astro.url.pathname;
-const canonical = `https://kashifalikhann.github.io/hennabyhanazz${isEs ? '/es' : ''}${path === '/' ? '' : path}`;
+const siteUrl = import.meta.env.SITE_URL || 'https://kashifalikhann.github.io/hennabyhanazz';
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL;
+const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL;
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
+const canonical = `${siteUrl}${isEs ? '/es' : ''}${path === '/' ? '' : path}`;
 const altLangPath = isEs ? path : `/es${path === '/' ? '' : path}`;
 const altLangLabel = isEs ? 'English' : 'Español';
 ---
@@ -30,12 +34,12 @@ const altLangLabel = isEs ? 'English' : 'Español';
   <meta name="description" content={description || "Barcelona's premier henna artistry — Book your appointment today."} />
   <link rel="canonical" href={canonical} />
 
-  <link rel="alternate" hreflang="en" href={`https://kashifalikhann.github.io/hennabyhanazz${path === '/' ? '' : path}`} />
-  <link rel="alternate" hreflang="es" href={`https://kashifalikhann.github.io/hennabyhanazz/es${path === '/' ? '' : path}`} />
+  <link rel="alternate" hreflang="en" href={`${siteUrl}${path === '/' ? '' : path}`} />
+  <link rel="alternate" hreflang="es" href={`${siteUrl}/es${path === '/' ? '' : path}`} />
 
   <meta property="og:title" content={`${title} | Henna By Hanazz`} />
   <meta property="og:description" content={description || "Barcelona's premier henna artistry"} />
-  <meta property="og:image" content={ogImage || 'https://kashifalikhann.github.io/hennabyhanazz/og-image.png'} />
+  <meta property="og:image" content={ogImage || `${siteUrl}/og-image.png`} />
   <meta property="og:url" content={canonical} />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -44,13 +48,13 @@ const altLangLabel = isEs ? 'English' : 'Español';
     "@type": "LocalBusiness",
     "name": "Henna By Hanazz",
     "description": "Barcelona henna artist — Premium henna artistry for events, walk-ins, and custom designs.",
-    "url": "https://kashifalikhann.github.io/hennabyhanazz",
-    "telephone": "+34XXXXXXXXX",
-    "email": "info@smgtec.es",
+    "url": siteUrl,
+    "telephone": `+34${whatsappNumber}`,
+    "email": contactEmail,
     "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" },
     "priceRange": "€€",
-    "image": "https://kashifalikhann.github.io/hennabyhanazz/og-image.png",
-    "sameAs": ["https://www.instagram.com/hennabyhanazz/"]
+    "image": `${siteUrl}/og-image.png`,
+    "sameAs": [instagramUrl]
   })} />
 
   <link rel="manifest" href="/hennabyhanazz/manifest.json" />

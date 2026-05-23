@@ -16,6 +16,9 @@ interface ImportMetaEnv {
   readonly FROM_EMAIL: string;
   readonly INSTAGRAM_ACCESS_TOKEN: string;
   readonly INSTAGRAM_USER_ID: string;
+  readonly PUBLIC_CONTACT_EMAIL: string;
+  readonly PUBLIC_WHATSAPP_NUMBER: string;
+  readonly PUBLIC_INSTAGRAM_URL: string;
 }
 
 interface ImportMeta {
