@@ -5,41 +5,114 @@ const isEs = lang === 'es';
 const t = (key: string) => {
   const translations: Record<string, Record<string, string>> = {
     en: {
-      'cookies.message': 'We use cookies to improve your experience. By continuing to visit this site you agree to our use of cookies.',
-      'cookies.accept': 'Accept All',
-      'cookies.necessary': 'Necessary Only',
-      'cookies.learn': 'Learn more',
+      'cookie.title': 'We use cookies',
+      'cookie.description': 'We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. You can manage your preferences at any time.',
+      'cookie.necessary': 'Necessary Only',
+      'cookie.accept': 'Accept All',
+      'cookie.settings': 'Cookie Settings',
+      'cookie.save': 'Save Preferences',
+      'cookie.necessary_title': 'Necessary Cookies',
+      'cookie.necessary_desc': 'These cookies are essential for the website to function properly. They enable core functionality such as security, network management, and accessibility.',
+      'cookie.analytics_title': 'Analytics Cookies',
+      'cookie.analytics_desc': 'These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. They help us improve our website.',
+      'cookie.marketing_title': 'Marketing Cookies',
+      'cookie.marketing_desc': 'These cookies are used to track visitors across websites to display relevant advertisements. They may be set by third-party advertising partners.',
+      'cookie.learn_more': 'Learn more in our',
+      'cookie.privacy_link': 'Privacy Policy',
+      'cookie.cookie_link': 'Cookie Policy',
     },
     es: {
-      'cookies.message': 'Utilizamos cookies para mejorar tu experiencia. Al continuar visitando este sitio, aceptas nuestro uso de cookies.',
-      'cookies.accept': 'Aceptar Todas',
-      'cookies.necessary': 'Solo Necesarias',
-      'cookies.learn': 'Más información',
+      'cookie.title': 'Usamos cookies',
+      'cookie.description': 'Utilizamos cookies para mejorar su experiencia de navegación, servir contenido personalizado y analizar nuestro tráfico. Al hacer clic en "Aceptar Todas", usted consiente nuestro uso de cookies. Puede gestionar sus preferencias en cualquier momento.',
+      'cookie.necessary': 'Solo Necesarias',
+      'cookie.accept': 'Aceptar Todas',
+      'cookie.settings': 'Configuración de Cookies',
+      'cookie.save': 'Guardar Preferencias',
+      'cookie.necessary_title': 'Cookies Necesarias',
+      'cookie.necessary_desc': 'Estas cookies son esenciales para que el sitio web funcione correctamente. Permiten funcionalidades básicas como seguridad, gestión de red y accesibilidad.',
+      'cookie.analytics_title': 'Cookies Analíticas',
+      'cookie.analytics_desc': 'Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web recopilando e informando información de forma anónima. Nos ayudan a mejorar nuestro sitio web.',
+      'cookie.marketing_title': 'Cookies de Marketing',
+      'cookie.marketing_desc': 'Estas cookies se utilizan para rastrear a los visitantes en los sitios web para mostrar anuncios relevantes. Pueden ser establecidas por socios publicitarios de terceros.',
+      'cookie.learn_more': 'Más información en nuestra',
+      'cookie.privacy_link': 'Política de Privacidad',
+      'cookie.cookie_link': 'Política de Cookies',
     }
   };
   return translations[lang]?.[key] || key;
 };
+
+const privacyLink = isEs ? '/hennabyhanazz/es/privacidad' : '/hennabyhanazz/privacy';
+const cookieLink = isEs ? '/hennabyhanazz/es/cookies' : '/hennabyhanazz/cookies';
 ---
 
+<!-- Cookie Consent Banner -->
 <div id="cookieBanner" class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-500">
-  <div class="bg-charcoal text-white p-4 md:p-6 shadow-2xl">
-    <div class="container-premium flex flex-col md:flex-row items-center justify-between gap-4">
-      <p className="text-sm text-white/70 flex-1 max-w-2xl">
-        {t('cookies.message')}
-        <a href={`${isEs ? '/es' : ''}/cookies`} className="text-gold underline ml-1">{t('cookies.learn')}</a>
-      </p>
-      <div className="flex gap-3">
-        <button
-          id="cookieNecessary"
-          className="px-5 py-2 rounded-full text-sm font-medium border border-white/20 text-white/70 hover:border-white/40 hover:text-white transition-colors"
-        >
-          {t('cookies.necessary')}
-        </button>
-        <button
-          id="cookieAccept"
-          className="px-5 py-2 rounded-full text-sm font-medium bg-gold text-charcoal hover:bg-gold-light transition-colors"
-        >
-          {t('cookies.accept')}
+  <div class="bg-white border-t shadow-2xl">
+    <!-- Simple Banner -->
+    <div id="cookieSimple" class="container-premium py-4 md:py-6">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex-1">
+          <h3 class="font-display text-lg font-semibold text-charcoal mb-1">{t('cookie.title')} 🍪</h3>
+          <p class="text-sm text-gray leading-relaxed">{t('cookie.description')}</p>
+          <p class="text-xs text-gray-light mt-2">
+            {t('cookie.learn_more')} <a href={privacyLink} class="text-gold-dark underline">{t('cookie.privacy_link')}</a> & <a href={cookieLink} class="text-gold-dark underline">{t('cookie.cookie_link')}</a>.
+          </p>
+        </div>
+        <div class="flex gap-3 shrink-0">
+          <button id="cookieSettings" class="px-4 py-2 rounded-full text-sm font-medium border border-border-dark text-charcoal hover:bg-warm transition-colors">
+            {t('cookie.settings')}
+          </button>
+          <button id="cookieNecessary" class="px-4 py-2 rounded-full text-sm font-medium border border-charcoal text-charcoal hover:bg-warm transition-colors">
+            {t('cookie.necessary')}
+          </button>
+          <button id="cookieAccept" class="px-4 py-2 rounded-full text-sm font-medium bg-charcoal text-white hover:bg-gold-dark transition-colors">
+            {t('cookie.accept')}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Settings (hidden by default) -->
+    <div id="cookieSettingsPanel" class="hidden container-premium py-4 md:py-6 border-t border-border">
+      <div class="space-y-4">
+        <!-- Necessary -->
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1">
+            <h4 class="font-semibold text-charcoal text-sm">{t('cookie.necessary_title')}</h4>
+            <p class="text-xs text-gray mt-1">{t('cookie.necessary_desc')}</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer shrink-0">
+            <input type="checkbox" checked disabled class="sr-only peer">
+            <div class="w-9 h-5 bg-gray-muted peer-checked:bg-gold rounded-full peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+          </label>
+        </div>
+        <!-- Analytics -->
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1">
+            <h4 class="font-semibold text-charcoal text-sm">{t('cookie.analytics_title')}</h4>
+            <p class="text-xs text-gray mt-1">{t('cookie.analytics_desc')}</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer shrink-0">
+            <input type="checkbox" id="cookieAnalytics" class="sr-only peer">
+            <div class="w-9 h-5 bg-gray-muted peer-checked:bg-gold rounded-full peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+          </label>
+        </div>
+        <!-- Marketing -->
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1">
+            <h4 class="font-semibold text-charcoal text-sm">{t('cookie.marketing_title')}</h4>
+            <p class="text-xs text-gray mt-1">{t('cookie.marketing_desc')}</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer shrink-0">
+            <input type="checkbox" id="cookieMarketing" class="sr-only peer">
+            <div class="w-9 h-5 bg-gray-muted peer-checked:bg-gold rounded-full peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+          </label>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3 mt-4 pt-4 border-t border-border">
+        <button id="cookieSettingsSave" class="px-5 py-2 rounded-full text-sm font-medium bg-charcoal text-white hover:bg-gold-dark transition-colors">
+          {t('cookie.save')}
         </button>
       </div>
     </div>
@@ -47,30 +120,53 @@ const t = (key: string) => {
 </div>
 
 <script>
-  (function() {
-    const banner = document.getElementById('cookieBanner');
-    const acceptBtn = document.getElementById('cookieAccept');
-    const necessaryBtn = document.getElementById('cookieNecessary');
+(function() {
+  const banner = document.getElementById('cookieBanner');
+  const simple = document.getElementById('cookieSimple');
+  const settingsPanel = document.getElementById('cookieSettingsPanel');
+  const acceptBtn = document.getElementById('cookieAccept');
+  const necessaryBtn = document.getElementById('cookieNecessary');
+  const settingsBtn = document.getElementById('cookieSettings');
+  const saveBtn = document.getElementById('cookieSettingsSave');
+  const analyticsToggle = document.getElementById('cookieAnalytics');
+  const marketingToggle = document.getElementById('cookieMarketing');
 
-    // Check if consent already given
-    if (!localStorage.getItem('cookie-consent')) {
-      setTimeout(() => {
-        banner.classList.remove('translate-y-full');
-      }, 1500);
-    }
+  // Show banner after 1 second if no consent stored
+  const consent = localStorage.getItem('cookie-consent');
+  if (!consent) {
+    setTimeout(() => banner.classList.remove('translate-y-full'), 1000);
+  }
 
-    function hideBanner() {
-      banner.classList.add('translate-y-full');
-    }
+  function hideBanner() {
+    banner.classList.add('translate-y-full');
+  }
 
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'all');
-      hideBanner();
-    });
+  function saveConsent(level) {
+    const analytics = analyticsToggle ? analyticsToggle.checked : false;
+    const marketing = marketingToggle ? marketingToggle.checked : false;
+    const consent = {
+      level: level,
+      analytics: analytics,
+      marketing: marketing,
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('cookie-consent', JSON.stringify(consent));
+    hideBanner();
+  }
 
-    necessaryBtn.addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'necessary');
-      hideBanner();
-    });
-  })();
+  acceptBtn.addEventListener('click', () => {
+    if (analyticsToggle) analyticsToggle.checked = true;
+    if (marketingToggle) marketingToggle.checked = true;
+    saveConsent('all');
+  });
+
+  necessaryBtn.addEventListener('click', () => saveConsent('necessary'));
+
+  settingsBtn.addEventListener('click', () => {
+    simple.classList.add('hidden');
+    settingsPanel.classList.remove('hidden');
+  });
+
+  saveBtn.addEventListener('click', () => saveConsent('custom'));
+})();
 </script>

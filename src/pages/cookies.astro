@@ -5,34 +5,84 @@ const lang = 'en';
 
 <BaseLayout title="Cookie Policy" lang={lang}>
   <section class="section-padding bg-white">
-    <div class="container-premium max-w-3xl">
-      <h1 class="font-display text-4xl font-semibold text-charcoal mb-8">Cookie Policy</h1>
+    <div class="container-premium max-w-4xl">
+      <h1 class="font-display text-4xl font-semibold text-charcoal mb-4">Cookie Policy</h1>
       <p class="text-sm text-gray-light mb-8">Last updated: May 2026</p>
 
-      <div class="prose prose-lg max-w-none text-charcoal-light leading-relaxed space-y-6">
-        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">1. What Are Cookies</h2>
-        <p>Cookies are small text files stored on your device when you visit a website. They help the site function properly, remember preferences, and provide analytics to improve your experience.</p>
+      <div class="prose prose-lg max-w-none text-charcoal-light leading-relaxed space-y-8">
 
-        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">2. Cookies We Use</h2>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">1. What Are Cookies?</h2>
+        <p>Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and to provide information to the owners of the site. Cookies help improve your browsing experience by remembering your preferences and enabling core functionality.</p>
+
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">2. How We Use Cookies</h2>
+        <p>We use cookies for the following purposes:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Necessary cookies:</strong> Essential for the website to function. These cannot be disabled.</li>
+          <li><strong>Analytics cookies:</strong> Help us understand how visitors use our website by collecting anonymous usage data.</li>
+          <li><strong>Marketing cookies:</strong> Used to track visitors across websites to display relevant advertisements.</li>
+        </ul>
+
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">3. Cookies We Use</h2>
         <table class="w-full text-sm border-collapse my-6">
           <thead>
-            <tr class="border-b border-border">
-              <th class="text-left py-3 font-semibold text-charcoal">Cookie</th>
+            <tr class="border-b-2 border-border-dark">
+              <th class="text-left py-3 font-semibold text-charcoal">Cookie Name</th>
+              <th class="text-left py-3 font-semibold text-charcoal">Provider</th>
               <th class="text-left py-3 font-semibold text-charcoal">Purpose</th>
+              <th class="text-left py-3 font-semibold text-charcoal">Duration</th>
               <th class="text-left py-3 font-semibold text-charcoal">Type</th>
             </tr>
           </thead>
           <tbody class="text-charcoal-light">
-            <tr class="border-b border-border"><td class="py-3">localStorage (cookie-consent)</td><td>Stores your cookie consent choice</td><td>Necessary</td></tr>
-            <tr class="border-b border-border"><td class="py-3">Google Analytics (_ga)</td><td>Anonymized site usage analytics</td><td>Analytics</td></tr>
+            <tr class="border-b border-border"><td class="py-3">cookie-consent</td><td>Henna By Hanazz</td><td>Stores your cookie consent preferences</td><td>1 year</td><td>Necessary</td></tr>
+            <tr class="border-b border-border"><td class="py-3">_ga</td><td>Google Analytics</td><td>Distinguishes unique users by assigning a randomly generated number</td><td>2 years</td><td>Analytics</td></tr>
+            <tr class="border-b border-border"><td class="py-3">_gid</td><td>Google Analytics</td><td>Distinguishes unique users for 24 hours</td><td>24 hours</td><td>Analytics</td></tr>
+            <tr class="border-b border-border"><td class="py-3">_gat</td><td>Google Analytics</td><td>Used to throttle request rate</td><td>1 minute</td><td>Analytics</td></tr>
           </tbody>
         </table>
 
-        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">3. Managing Cookies</h2>
-        <p>When you first visit our site, you will see a cookie banner. You can choose to "Accept All" or "Necessary Only." You can also manage cookies through your browser settings at any time.</p>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">4. Third-Party Cookies</h2>
+        <p>Some cookies are placed by third-party services that appear on our pages. We do not control these cookies. The third parties that may set cookies on our site include:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Google Analytics:</strong> For website analytics and performance measurement</li>
+          <li><strong>Meta (Facebook/Instagram):</strong> If you interact with our social media content</li>
+        </ul>
 
-        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">4. Contact</h2>
-        <p>For questions about this policy, contact us via WhatsApp at +34 655 729 113.</p>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">5. Managing Your Cookie Preferences</h2>
+        <p>When you first visit our site, you will see a cookie consent banner. You can:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Accept All:</strong> Allow all cookies including analytics and marketing</li>
+          <li><strong>Necessary Only:</strong> Only allow essential cookies required for the site to function</li>
+          <li><strong>Customize:</strong> Use the settings panel to choose which cookie categories to allow</li>
+        </ul>
+        <p>You can change your cookie preferences at any time by clearing your browser cookies — the consent banner will reappear on your next visit.</p>
+
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">6. Browser Cookie Controls</h2>
+        <p>You can also control cookies through your browser settings:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Chrome:</strong> Settings → Privacy and Security → Cookies</li>
+          <li><strong>Firefox:</strong> Preferences → Privacy & Security → Cookies</li>
+          <li><strong>Safari:</strong> Preferences → Privacy → Cookies</li>
+          <li><strong>Edge:</strong> Settings → Cookies and Site Permissions</li>
+        </ul>
+        <p>Please note that disabling cookies may affect the functionality of our website.</p>
+
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">7. Legal Basis</h2>
+        <p>Under the GDPR and the ePrivacy Directive, we need your consent before placing non-essential cookies on your device. Necessary cookies are exempt from consent requirements as they are essential for the service you have requested.</p>
+
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">8. Data Protection</h2>
+        <p>Any personal data collected through cookies is processed in accordance with our <a href="/hennabyhanazz/privacy" class="text-gold-dark underline">Privacy Policy</a>. We implement appropriate security measures to protect your data.</p>
+
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">9. Changes to This Cookie Policy</h2>
+        <p>We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our data practices. Any changes will be posted on this page with an updated revision date.</p>
+
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">10. Contact Us</h2>
+        <p>If you have any questions about this Cookie Policy or our use of cookies, please contact us at:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Email:</strong> info@hennabyhanazz.com</li>
+          <li><strong>WhatsApp:</strong> +34 655 729 113</li>
+        </ul>
+
       </div>
     </div>
   </section>
