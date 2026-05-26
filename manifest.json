@@ -1,0 +1,13 @@
+{
+  "name": "Henna By Hanazz",
+  "short_name": "HennaHanazz",
+  "description": "Barcelona's premier henna artistry — Book your appointment today.",
+  "start_url": "/hennabyhanazz/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "icons": [
+    { "src": "/hennabyhanazz/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/hennabyhanazz/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
