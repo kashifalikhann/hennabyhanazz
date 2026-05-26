@@ -52,14 +52,14 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
         <!-- Language Toggle -->
         <div class="lang-toggle">
           <a
-            href={isEs ? Astro.url.pathname.replace(/^\/es/, '') || '/' : `/es${Astro.url.pathname}`}
-            class={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${isEs ? 'bg-white text-charcoal shadow-sm' : 'text-gray-light hover:text-charcoal'}`}
+            href={isEs ? (Astro.url.pathname.replace(/^\/es/, '') || '/') : (Astro.url.pathname || '/')}
+            class={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${!isEs ? 'bg-white text-charcoal shadow-sm' : 'text-gray-light hover:text-charcoal'}`}
           >
             EN
           </a>
           <a
-            href={isEs ? Astro.url.pathname.replace(/^\/es/, '') || '/' : `/es${Astro.url.pathname}`}
-            class={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${!isEs ? 'bg-white text-charcoal shadow-sm' : 'text-gray-light hover:text-charcoal'}`}
+            href={isEs ? (Astro.url.pathname || '/') : (`/es${Astro.url.pathname}` || '/es/')}
+            class={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${isEs ? 'bg-white text-charcoal shadow-sm' : 'text-gray-light hover:text-charcoal'}`}
           >
             ES
           </a>

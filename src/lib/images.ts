@@ -1,57 +1,43 @@
-// Premium henna images for the website
-// Replace these Unsplash placeholders with Hanazz's actual photos when available
+// Henna By Hanazz — Image references
+// Real images from the artist in /public/images/gallery/
 
 export const images = {
   hero: {
-    src: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
-    alt: 'Intricate henna design on hands — Henna By Hanazz Barcelona',
+    src: '/images/gallery/469531126_18344098489181880_4335127524695816281_n.jpeg',
+    alt: 'Intricate bridal henna design by Henna By Hanazz',
   },
   about: {
-    src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80',
-    alt: 'Hanazz, professional henna artist in Barcelona',
+    src: '/images/gallery/Imagen_Stand_Henna.jpg',
+    alt: 'Henna By Hanazz at work',
   },
   services: {
     bridal: {
-      src: 'https://images.unsplash.com/photo-1590012314607-20e25d5ad998?w=600&q=80',
+      src: '/images/gallery/621926232_18033133736563044_9050057617791740335_n..webp',
       alt: 'Bridal henna design — Pakistani, Arabic, Indian styles',
     },
     events: {
-      src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
+      src: '/images/gallery/621454917_18043642184707923_4351201793556904431_n..webp',
       alt: 'Event and party henna — live henna station',
     },
     private: {
-      src: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80',
-      alt: 'Private henna session — Barcelona studio or home service',
+      src: '/images/gallery/622510090_18152200114438132_5514656696029178468_n..jpg',
+      alt: 'Private henna session — Barcelona studio',
     },
     workshops: {
-      src: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&q=80',
-      alt: 'Henna workshop — learn the art of henna',
+      src: '/images/gallery/624322142_18099937840698687_8451743871346094723_n..jpg',
+      alt: 'Henna workshop — learning the art',
     },
   },
   gallery: [
-    {
-      src: 'https://images.unsplash.com/photo-1590012314607-20e25d5ad998?w=600&q=80',
-      alt: 'Bridal henna design by Hanazz — Barcelona',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80',
-      alt: 'Intricate henna pattern on hands',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80',
-      alt: 'Henna artist at work — Barcelona',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80',
-      alt: 'Beautiful henna patterns and designs',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&q=80',
-      alt: 'Henna workshop session — Barcelona',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
-      alt: 'Wedding henna celebration — destination wedding',
-    },
+    { src: '/images/gallery/621847038_18091514279004894_4326534710981372451_n.webp', alt: 'Henna design by Hanazz' },
+    { src: '/images/gallery/630133994_18398384026179409_2016633784185980184_n..jpg', alt: 'Henna design by Hanazz' },
+    { src: '/images/gallery/623444876_18108268186687934_1720788768774193759_n..webp', alt: 'Henna design by Hanazz' },
+    { src: '/images/gallery/621007981_18139646959474591_7221960325564044459_n..jpg', alt: 'Henna design by Hanazz' },
+    { src: '/images/gallery/620956139_18099175102850718_2102993831649624179_n..jpg', alt: 'Henna design by Hanazz' },
+    { src: '/images/gallery/641243077_18559622419044315_4218939184815995326_n..jpg', alt: 'Henna design by Hanazz' },
   ],
+  logo: {
+    src: '/images/logo.jpg',
+    alt: 'Henna By Hanazz logo',
+  },
 };
