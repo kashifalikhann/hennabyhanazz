@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://kashifalikhann.github.io',
+  site: 'https://kashifalikhann.github.io/hennabyhanazz',
   base: '/hennabyhanazz',
   output: 'static',
   integrations: [react(), sitemap()],
