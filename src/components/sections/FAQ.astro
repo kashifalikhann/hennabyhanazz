@@ -1,86 +1,80 @@
 ---
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
+const t = (key: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      'faq.eyebrow': 'FAQ',
+      'faq.title': 'Frequently Asked Questions',
+      'faq.q1.q': 'What styles of henna do you offer?',
+      'faq.q1.a': 'I specialise in Pakistani, Arabic, Indian and fusion styles. Every design is custom-created based on your preference and the style that suits you best.',
+      'faq.q2.q': 'Is your henna safe?',
+      'faq.q2.a': 'Absolutely. I use 100% natural henna with no PPD, no chemicals and no additives. It\'s safe for all skin types.',
+      'faq.q3.q': 'Do you travel to the client?',
+      'faq.q3.a': 'Yes, I offer home service throughout Barcelona and the surrounding area. I also travel for destination weddings.',
+      'faq.q4.q': 'How far in advance should I book bridal henna?',
+      'faq.q4.a': 'I recommend booking at least 2-3 months in advance for bridal work, especially during wedding season.',
+      'faq.q5.q': 'Do you offer henna for events?',
+      'faq.q5.a': 'Yes, I provide live henna stations for weddings, parties, corporate events and cultural celebrations.',
+      'faq.q6.q': 'How do I book and pay?',
+      'faq.q6.a': 'You can book directly via WhatsApp. Payment can be made via Bizum, bank transfer or cash.',
+    },
+    es: {
+      'faq.eyebrow': 'FAQ',
+      'faq.title': 'Preguntas Frecuentes',
+      'faq.q1.q': '¿Qué estilos de henna ofrecéis?',
+      'faq.q1.a': 'Me especializo en estilos pakistaní, árabe, indio y fusión. Cada diseño se crea a medida según tus preferencias y el estilo que mejor se adapte a ti.',
+      'faq.q2.q': '¿Es segura vuestra henna?',
+      'faq.q2.a': 'Absolutamente. Utilizo henna 100% natural sin PPD, sin químicos y sin aditivos. Es segura para todo tipo de piel.',
+      'faq.q3.q': '¿Viajáis al domicilio del cliente?',
+      'faq.q3.a': 'Sí, ofrezco servicio a domicilio en Barcelona y alrededores. También viajo para bodas de destino.',
+      'faq.q4.q': '¿Con cuánta antelación debo reservar la henna nupcial?',
+      'faq.q4.a': 'Recomiendo reservar con al menos 2-3 meses de antelación para trabajos nupciales, especialmente en temporada de bodas.',
+      'faq.q5.q': '¿Ofrecéis henna para eventos?',
+      'faq.q5.a': 'Sí, ofrezco estaciones de henna en vivo para bodas, fiestas, eventos corporativos y celebraciones culturales.',
+      'faq.q6.q': '¿Cómo reservo y pago?',
+      'faq.q6.a': 'Puedes reservar directamente por WhatsApp. El pago puede ser mediante Bizum, transferencia bancana o efectivo.',
+    }
+  };
+  return translations[lang]?.[key] || key;
+};
+
 const faqs = [
-  {
-    q: isEs ? '¿Cuánto dura la henna?' : 'How long does henna last?',
-    a: isEs ? 'La henna dura de 1 a 3 semanas dependiendo del cuidado y la ubicación en el cuerpo.' : 'Henna lasts 1-3 weeks depending on aftercare and body placement.'
-  },
-  {
-    q: isEs ? '¿Duele la aplicación de henna?' : 'Does henna application hurt?',
-    a: isEs ? 'No, la henna no duele. Es una sensación fresca y relajante.' : 'No, henna does not hurt. It feels cool and relaxing.'
-  },
-  {
-    q: isEs ? '¿Cómo reservo una cita?' : 'How do I book an appointment?',
-    a: isEs ? 'Selecciona un servicio, elige fecha y hora, y paga el depósito para confirmar.' : 'Select a service, pick a date and time, and pay a deposit to confirm.'
-  },
-  {
-    q: isEs ? '¿Ofrecéis servicios para eventos?' : 'Do you offer event services?',
-    a: isEs ? 'Sí, ofrecemos henna en vivo para bodas, fiestas y eventos corporativos. Contáctanos para presupuesto.' : 'Yes, we offer live henna for weddings, parties, and corporate events. Contact us for a quote.'
-  },
-  {
-    q: isEs ? '¿Cuál es vuestra política de cancelación?' : 'What is your cancellation policy?',
-    a: isEs ? 'Cancelaciones con 24 horas de antelación reciben reembolso completo.' : 'Cancellations with 24 hours notice receive a full refund.'
-  },
-  {
-    q: isEs ? '¿Es segura vuestra henna? ¿Qué es la henna negra?' : 'Is your henna safe? What about black henna?',
-    a: isEs ? 'Absolutamente. Usamos henna 100% natural (Lawsonia inermis) libre de PPD y aditivos químicos. La "henna negra" contiene PPD (parafenilendiamina), una sustancia química prohibida para contacto con la piel por la UE (Reglamento 1223/2009). Estudios muestran que el 36% de los productos comerciales etiquetados como "henna" contienen PPD no declarado. Nosotros importamos nuestra henna directamente de productores tradicionales y la mezclamos a mano — cero químicos, cero riesgos.' : 'Absolutely. We use 100% natural henna (Lawsonia inermis) free from PPD and chemical additives. "Black henna" contains PPD (paraphenylenediamine), a chemical banned for skin contact under EU Regulation 1223/2009. Studies show 36% of commercial products labelled "henna" contain undeclared PPD. We source our henna directly from traditional growers and hand-mix it — zero chemicals, zero risks.'
-  },
-  {
-    q: isEs ? '¿Cómo cuido mi henna después de la aplicación?' : 'How do I care for my henna after application?',
-    a: isEs ? 'Para obtener el color más oscuro: deja la pasta puesta 6-8 horas (o toda la noche). Aplica calor suave con un secador para activar la tinta. Evita el agua durante las primeras 12 horas. Después, aplica aceite natural (coco o oliva) para nutrir la mancha. Cuanto más esperes antes del primer lavado, más oscuro será el resultado.' : 'For the darkest stain: leave the paste on for 6-8 hours (or overnight). Apply gentle heat with a hairdryer to activate the dye. Avoid water for the first 12 hours. After removing, apply natural oil (coconut or olive) to nourish the stain. The longer you wait before your first wash, the darker the result.'
-  },
+  { qKey: 'faq.q1.q', aKey: 'faq.q1.a' },
+  { qKey: 'faq.q2.q', aKey: 'faq.q2.a' },
+  { qKey: 'faq.q3.q', aKey: 'faq.q3.a' },
+  { qKey: 'faq.q4.q', aKey: 'faq.q4.a' },
+  { qKey: 'faq.q5.q', aKey: 'faq.q5.a' },
+  { qKey: 'faq.q6.q', aKey: 'faq.q6.a' },
 ];
 ---
 
-<section id="faq" class="py-16 md:py-24 lg:py-28 px-6">
-  <div class="max-w-3xl mx-auto">
-    <div class="text-center mb-16">
-      <span class="eyebrow">FAQ</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tight mt-4">
-        {isEs ? 'Preguntas Frecuentes' : 'FAQ'}
-      </h2>
-    </div>
+<section id="faq" class="section-padding bg-white">
+  <div class="container-premium">
+    <div class="max-w-3xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <span class="eyebrow fade-up">{t('faq.eyebrow')}</span>
+        <h2 class="section-title fade-up stagger-1">{t('faq.title')}</h2>
+      </div>
 
-    <div class="space-y-3">
-      {faqs.map((faq, i) => (
-        <div class="border border-border rounded-[1.5rem] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] faq-item">
-          <button class="w-full flex items-center justify-between p-6 text-left" data-faq-toggle>
-            <span class="font-display font-semibold pr-4">{faq.q}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 transition-transform duration-500 faq-chevron">
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
-          </button>
-          <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] faq-answer">
-            <p class="text-muted pb-6 leading-relaxed">{faq.a}</p>
+      <!-- FAQ Items -->
+      <div class="divide-y divide-border">
+        {faqs.map((faq, i) => (
+          <div class="faq-item fade-up" style={`transition-delay: ${i * 0.05}s`}>
+            <button
+              class="faq-question"
+              onclick="this.nextElementSibling.classList.toggle('open'); this.querySelector('span').textContent = this.nextElementSibling.classList.contains('open') ? '−' : '+'"
+            >
+              <span>{t(faq.qKey)}</span>
+              <span class="text-gold text-xl shrink-0">+</span>
+            </button>
+            <div class="faq-answer">
+              {t(faq.aKey)}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
 </section>
-
-<script>
-  document.querySelectorAll('[data-faq-toggle]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const answer = item.querySelector('.faq-answer');
-      const chevron = item.querySelector('.faq-chevron');
-      const isOpen = item.dataset.open === 'true';
-
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.dataset.open = 'false';
-        i.querySelector('.faq-answer').style.maxHeight = '0';
-        i.querySelector('.faq-answer').style.paddingBottom = '0';
-        i.querySelector('.faq-chevron').style.transform = 'rotate(0deg)';
-      });
-
-      if (!isOpen) {
-        item.dataset.open = 'true';
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        answer.style.paddingBottom = '1.5rem';
-        chevron.style.transform = 'rotate(180deg)';
-      }
-    });
-  });
-</script>

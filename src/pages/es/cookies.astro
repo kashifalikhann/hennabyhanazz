@@ -1,86 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const lang = 'es';
-const base = import.meta.env.BASE_URL;
-const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
 ---
 
 <BaseLayout title="Política de Cookies" lang={lang}>
-  <div class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
-    <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight mb-8">Política de Cookies</h1>
-    <p class="text-sm text-muted mb-12">Última actualización: mayo 2026</p>
-
-    <div class="space-y-8 text-muted leading-relaxed">
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">1. Qué Son las Cookies</h2>
-        <p>Las cookies son pequeños archivos de texto almacenados en tu dispositivo cuando visitas un sitio web. Ayudan al sitio a funcionar correctamente, recordar preferencias y proporcionar analíticas.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">2. Cookies que Utilizamos</h2>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm border-collapse">
-            <thead>
-              <tr class="border-b border-border">
-                <th class="text-left py-3 pr-4 font-semibold text-text">Cookie / Tecnología</th>
-                <th class="text-left py-3 pr-4 font-semibold text-text">Propósito</th>
-                <th class="text-left py-3 pr-4 font-semibold text-text">Tipo</th>
-                <th class="text-left py-3 font-semibold text-text">Duración</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-border">
-              <tr>
-                <td class="py-3 pr-4">localStorage (tema)</td>
-                <td class="py-3 pr-4">Recuerda tu preferencia de modo oscuro/claro</td>
-                <td class="py-3 pr-4">Necesaria</td>
-                <td class="py-3">Persistente</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4">localStorage (consentimiento)</td>
-                <td class="py-3 pr-4">Almacena tu elección de consentimiento de cookies</td>
-                <td class="py-3 pr-4">Necesaria</td>
-                <td class="py-3">1 año</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4">Google Analytics (_ga, _gid)</td>
-                <td class="py-3 pr-4">Analíticas anonimizadas de uso del sitio</td>
-                <td class="py-3 pr-4">Marketing</td>
-                <td class="py-3">14 meses</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4">Facebook Pixel (_fbp)</td>
-                <td class="py-3 pr-4">Medición de rendimiento publicitario</td>
-                <td class="py-3 pr-4">Marketing</td>
-                <td class="py-3">3 meses</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">3. Cómo Usamos las Cookies</h2>
-        <ul class="list-disc pl-5 space-y-2">
-          <li><strong>Cookies necesarias</strong> — permiten funciones básicas como la preferencia de tema y el almacenamiento de consentimiento. No requieren consentimiento.</li>
-          <li><strong>Cookies de marketing</strong> — Google Analytics y Facebook Pixel nos ayudan a entender el tráfico y mejorar nuestro marketing. Solo se cargan con tu consentimiento explícito.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">4. Gestión de Cookies</h2>
-        <p>Al visitar nuestro sitio por primera vez, verás un banner de cookies. Puedes elegir "Aceptar Todas" o "Solo Necesarias" (que bloquea Google Analytics y Facebook Pixel).</p>
-        <p class="mt-2">También puedes gestionar las cookies a través de la configuración de tu navegador en cualquier momento.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">5. Cambios</h2>
-        <p>Podemos actualizar esta política. Los cambios se publicarán aquí con una fecha actualizada.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">6. Contacto</h2>
-        <p>Para preguntas, contáctanos en <a href={`mailto:${email}`} class="text-gold underline">{email}</a>.</p>
-      </section>
+  <section class="section-padding bg-white">
+    <div class="container-premium max-w-3xl">
+      <h1 class="font-display text-4xl font-semibold text-charcoal mb-8">Política de Cookies</h1>
+      <p class="text-sm text-gray-light mb-8">Última actualización: Mayo 2026</p>
+      <div class="prose prose-lg max-w-none text-charcoal-light leading-relaxed space-y-6">
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">1. Qué Son las Cookies</h2>
+        <p>Las cookies son pequeños archivos de texto almacenados en tu dispositivo cuando visitas un sitio web.</p>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">2. Cookies que Utilizamos</h2>
+        <table class="w-full text-sm border-collapse my-6">
+          <thead><tr class="border-b border-border"><th class="text-left py-3 font-semibold text-charcoal">Cookie</th><th class="text-left py-3 font-semibold text-charcoal">Propósito</th><th class="text-left py-3 font-semibold text-charcoal">Tipo</th></tr></thead>
+          <tbody class="text-charcoal-light">
+            <tr class="border-b border-border"><td class="py-3">localStorage (cookie-consent)</td><td>Almacena tu elección de consentimiento</td><td>Necesaria</td></tr>
+            <tr class="border-b border-border"><td class="py-3">Google Analytics (_ga)</td><td>Analítica anónima del sitio</td><td>Analítica</td></tr>
+          </tbody>
+        </table>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">3. Gestionar Cookies</h2>
+        <p>Cuando visitas nuestro sitio por primera vez, verás un banner de cookies. Puedes elegir "Aceptar Todas" o "Solo Necesarias".</p>
+      </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>

@@ -1,35 +1,92 @@
 ---
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
+const t = (key: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      'testimonials.eyebrow': 'Testimonials',
+      'testimonials.title': 'What our clients say',
+      'testimonials.t1.text': 'Hanazz made my bridal henna absolutely beautiful. The design was exactly what I wanted and she was so professional throughout.',
+      'testimonials.t1.name': 'Sarah M.',
+      'testimonials.t1.role': 'Bride, Barcelona',
+      'testimonials.t2.text': 'We hired Hanazz for our wedding guests and everyone loved it. She was fast, gentle and the designs were stunning.',
+      'testimonials.t2.name': 'Amira K.',
+      'testimonials.t2.role': 'Wedding, Costa Brava',
+      'testimonials.t3.text': 'The workshop was incredible. Hanazz is a patient teacher and I learned so much in just one session.',
+      'testimonials.t3.name': 'Laura R.',
+      'testimonials.t3.role': 'Workshop, Barcelona',
+      'testimonials.note': 'More reviews coming soon. Be the first to leave yours!',
+    },
+    es: {
+      'testimonials.eyebrow': 'Testimonios',
+      'testimonials.title': 'Lo que dicen nuestras clientas',
+      'testimonials.t1.text': 'Hanazz hizo mi henna nupcial absolutamente hermosa. El diseño era exactamente lo que quería y fue muy profesional en todo momento.',
+      'testimonials.t1.name': 'Sarah M.',
+      'testimonials.t1.role': 'Novia, Barcelona',
+      'testimonials.t2.text': 'Contratamos a Hanazz para las invitadas de nuestra boda y a todas les encantó. Fue rápida, delicada y los diseños fueron impresionantes.',
+      'testimonials.t2.name': 'Amira K.',
+      'testimonials.t2.role': 'Boda, Costa Brava',
+      'testimonials.t3.text': 'El taller fue increíble. Hanazz es una profesora paciente y aprendí mucho en una sola sesión.',
+      'testimonials.t3.name': 'Laura R.',
+      'testimonials.t3.role': 'Taller, Barcelona',
+      'testimonials.note': 'Más reseñas próximamente. ¡Sé la primera en dejar la tuya!',
+    }
+  };
+  return translations[lang]?.[key] || key;
+};
+
 const testimonials = [
-  { name: 'Sofia R.', text: isEs ? 'Hanazz hizo la henna para mi boda en el Born — un diseno de brazo completo con motivos florales Mughal. Duro 16 dias y quedo increible en las fotos. Todavia me preguntan donde la hice.' : 'Hanazz did my wedding henna in El Born — a full arm design with Mughal floral motifs. It lasted 16 days and looked stunning in photos. People still ask where I got it done.', rating: 5 },
-  { name: 'James T.', text: isEs ? 'Lleve a mi equipo corporativo a un taller de henna con Hanazz como actividad de team building. Profesional, paciente y adapto los disenos al gusto de cada uno. Repetiremos el ano que viene.' : 'I took my corporate team to a henna workshop with Hanazz as a team building activity. Professional, patient, and tailored designs to everyone\'s taste. We are booking again next year.', rating: 5 },
-  { name: 'Maria L.', text: isEs ? 'Asisti a su taller de iniciacion y en dos horas ya estaba haciendo mis primeros diseños basicos. Hanazz explica con claridad y mucha paciencia. Sali con henna puesta y muchas ganas de seguir practicando.' : 'I attended her beginner workshop and within two hours I was doing my first basic designs. Hanazz explains clearly and with so much patience. I left with henna on and eager to keep practicing.', rating: 5 },
-  { name: 'Alex K.', text: isEs ? 'Encargue un diseno personalizado de media pierna inspirando en la Alhambra. Hanazz capturo cada detalle — los arabescos, la simetria, todo. Duro casi tres semanas. Una obra de arte.' : 'I ordered a custom half-leg design inspired by the Alhambra. Hanazz captured every detail — the arabesques, the symmetry, everything. It lasted almost three weeks. A work of art.', rating: 5 },
+  {
+    textKey: 'testimonials.t1.text',
+    nameKey: 'testimonials.t1.name',
+    roleKey: 'testimonials.t1.role',
+  },
+  {
+    textKey: 'testimonials.t2.text',
+    nameKey: 'testimonials.t2.name',
+    roleKey: 'testimonials.t2.role',
+  },
+  {
+    textKey: 'testimonials.t3.text',
+    nameKey: 'testimonials.t3.name',
+    roleKey: 'testimonials.t3.role',
+  },
 ];
 ---
 
-<section id="testimonials" class="py-16 md:py-24 lg:py-28 px-6">
-  <div class="max-w-4xl mx-auto text-center">
-    <span class="eyebrow">{isEs ? 'Testimonios' : 'Testimonials'}</span>
-    <h2 class="font-display text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mt-4 mb-12 md:mb-16">
-      {isEs ? 'Lo Que Dicen Nuestros Clientes' : 'What Our Clients Say'}
-    </h2>
+<section class="section-padding bg-cream">
+  <div class="container-premium">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="eyebrow fade-up">{t('testimonials.eyebrow')}</span>
+      <h2 class="section-title fade-up stagger-1">{t('testimonials.title')}</h2>
+    </div>
 
-    <div class="grid md:grid-cols-2 gap-4 md:gap-6" id="testimonial-grid">
-      {testimonials.map((t, i) => (
-        <div class="double-bezel" style={`transition-delay: ${i * 100}ms`}>
-          <div class="double-bezel-inner bg-surface p-4 md:p-6 lg:p-8 text-left">
-            <div class="flex gap-1 mb-4">
-              {Array.from({ length: t.rating }).map(() => (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A96E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              ))}
+    <!-- Testimonials Grid -->
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      {testimonials.map((item, i) => (
+        <div class={`testimonial-card fade-up stagger-${i + 1}`}>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="text-charcoal-light leading-relaxed mb-6 text-[0.95rem]">
+            "{t(item.textKey)}"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gold-muted flex items-center justify-center">
+              <span class="text-sm font-semibold text-gold-dark">
+                {t(item.nameKey).charAt(0)}
+              </span>
             </div>
-            <p class="text-muted leading-relaxed mb-4 italic">"{t.text}"</p>
-            <p class="font-display font-semibold text-sm">{t.name}</p>
+            <div>
+              <p className="text-sm font-semibold text-charcoal">{t(item.nameKey)}</p>
+              <p className="text-xs text-gray-light">{t(item.roleKey)}</p>
+            </div>
           </div>
         </div>
       ))}
     </div>
+
+    <p class="text-center text-sm text-gray-light mt-8 fade-up">
+      {t('testimonials.note')}
+    </p>
   </div>
 </section>

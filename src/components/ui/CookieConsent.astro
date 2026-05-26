@@ -1,57 +1,76 @@
 ---
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
-const base = import.meta.env.BASE_URL;
+
+const t = (key: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      'cookies.message': 'We use cookies to improve your experience. By continuing to visit this site you agree to our use of cookies.',
+      'cookies.accept': 'Accept All',
+      'cookies.necessary': 'Necessary Only',
+      'cookies.learn': 'Learn more',
+    },
+    es: {
+      'cookies.message': 'Utilizamos cookies para mejorar tu experiencia. Al continuar visitando este sitio, aceptas nuestro uso de cookies.',
+      'cookies.accept': 'Aceptar Todas',
+      'cookies.necessary': 'Solo Necesarias',
+      'cookies.learn': 'Más información',
+    }
+  };
+  return translations[lang]?.[key] || key;
+};
 ---
 
-<div id="cookie-consent" class="fixed bottom-0 left-0 right-0 z-50 p-4 translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-  <div class="max-w-3xl mx-auto glass rounded-2xl p-4 md:p-6 border border-border">
-    <p class="text-sm leading-relaxed text-muted">
-      {isEs
-        ? 'Usamos cookies y tecnologías similares para mejorar tu experiencia, analizar el tráfico y mostrar contenido personalizado. Consulta nuestra'
-        : 'We use cookies and similar technologies to improve your experience, analyze traffic, and show personalised content. See our'}
-      <a href={`${base}${isEs ? '/es' : ''}/cookies`} class="text-gold underline hover:no-underline">{isEs ? 'Política de Cookies' : 'Cookie Policy'}</a>
-      {isEs ? ' y nuestra' : ' and'}
-      <a href={`${base}${isEs ? '/es' : ''}/privacy`} class="text-gold underline hover:no-underline">{isEs ? 'Política de Privacidad' : 'Privacy Policy'}</a>.
-    </p>
-    <div class="flex flex-wrap items-center gap-3 mt-4">
-      <button id="cookie-accept" class="btn-primary !py-2 !px-5 !text-xs">
-        {isEs ? 'Aceptar Todas' : 'Accept All'}
-      </button>
-      <button id="cookie-reject" class="btn-ghost !py-2 !px-5 !text-xs">
-        {isEs ? 'Solo Necesarias' : 'Necessary Only'}
-      </button>
+<div id="cookieBanner" class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-500">
+  <div class="bg-charcoal text-white p-4 md:p-6 shadow-2xl">
+    <div class="container-premium flex flex-col md:flex-row items-center justify-between gap-4">
+      <p className="text-sm text-white/70 flex-1 max-w-2xl">
+        {t('cookies.message')}
+        <a href={`${isEs ? '/es' : ''}/cookies`} className="text-gold underline ml-1">{t('cookies.learn')}</a>
+      </p>
+      <div className="flex gap-3">
+        <button
+          id="cookieNecessary"
+          className="px-5 py-2 rounded-full text-sm font-medium border border-white/20 text-white/70 hover:border-white/40 hover:text-white transition-colors"
+        >
+          {t('cookies.necessary')}
+        </button>
+        <button
+          id="cookieAccept"
+          className="px-5 py-2 rounded-full text-sm font-medium bg-gold text-charcoal hover:bg-gold-light transition-colors"
+        >
+          {t('cookies.accept')}
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
   (function() {
-    const banner = document.getElementById('cookie-consent');
-    const acceptBtn = document.getElementById('cookie-accept');
-    const rejectBtn = document.getElementById('cookie-reject');
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    const necessaryBtn = document.getElementById('cookieNecessary');
 
-    const consent = localStorage.getItem('cookie-consent');
-    if (consent === 'accepted' || consent === 'rejected') {
-      if (consent === 'accepted') {
-        window.dispatchEvent(new CustomEvent('consent-granted'));
-      }
-      return;
+    // Check if consent already given
+    if (!localStorage.getItem('cookie-consent')) {
+      setTimeout(() => {
+        banner.classList.remove('translate-y-full');
+      }, 1500);
     }
 
-    requestAnimationFrame(() => {
-      banner.style.transform = 'translateY(0)';
+    function hideBanner() {
+      banner.classList.add('translate-y-full');
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'all');
+      hideBanner();
     });
 
-    function setConsent(value) {
-      localStorage.setItem('cookie-consent', value);
-      banner.style.transform = 'translateY(100%)';
-      if (value === 'accepted') {
-        window.dispatchEvent(new CustomEvent('consent-granted'));
-      }
-    }
-
-    acceptBtn.addEventListener('click', () => setConsent('accepted'));
-    rejectBtn.addEventListener('click', () => setConsent('rejected'));
+    necessaryBtn.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'necessary');
+      hideBanner();
+    });
   })();
 </script>

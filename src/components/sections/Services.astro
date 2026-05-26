@@ -1,115 +1,123 @@
 ---
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
-const base = import.meta.env.BASE_URL;
+const t = (key: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      'services.eyebrow': 'Services',
+      'services.title': 'Henna for every occasion',
+      'services.subtitle': 'Each design is custom-created. Pricing depends on design complexity, size and location — contact us for a personalised quote.',
+      'services.bridal.title': 'Bridal Henna',
+      'services.bridal.description': 'Intricate, bespoke bridal mehndi for your most important day. Arabic, Pakistani, Indian or fusion styles.',
+      'services.events.title': 'Events & Parties',
+      'services.events.description': 'Live henna stations for weddings, cultural events, corporate gatherings and celebrations of all sizes.',
+      'services.private.title': 'Private Sessions',
+      'services.private.description': 'A calm, personalised henna experience at our Barcelona studio or at your home.',
+      'services.workshops.title': 'Workshops',
+      'services.workshops.description': 'Learn the art of henna. Group or private workshops for all levels.',
+      'services.cta': 'Enquire Now',
+    },
+    es: {
+      'services.eyebrow': 'Servicios',
+      'services.title': 'Henna para cada ocasión',
+      'services.subtitle': 'Cada diseño es creado a medida. El precio depende de la complejidad del diseño, el tamaño y la ubicación — contáctanos para un presupuesto personalizado.',
+      'services.bridal.title': 'Henna Nupcial',
+      'services.bridal.description': 'Mehndi nupcial intrincado y personalizado para tu día más importante. Estilos árabe, pakistaní, indio o fusión.',
+      'services.events.title': 'Eventos y Fiestas',
+      'services.events.description': 'Estaciones de henna en vivo para bodas, eventos culturales, actos corporativos y celebraciones de todo tipo.',
+      'services.private.title': 'Sesiones Privadas',
+      'services.private.description': 'Una experiencia de henna tranquila y personalizada en nuestro estudio de Barcelona o en tu domicilio.',
+      'services.workshops.title': 'Talleres',
+      'services.workshops.description': 'Aprende el arte de la henna. Talleres grupales o privados para todos los niveles.',
+      'services.cta': 'Consultar Ahora',
+    }
+  };
+  return translations[lang]?.[key] || key;
+};
+
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '34655729113';
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isEs ? 'Hola, me gustaría consultar sobre sus servicios de henna' : 'Hello, I would like to enquire about your henna services')}`;
+
+const services = [
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+    titleKey: 'services.bridal.title',
+    descKey: 'services.bridal.description',
+    image: 'https://images.unsplash.com/photo-1590012314607-20e25d5ad998?w=600&q=80',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
+    titleKey: 'services.events.title',
+    descKey: 'services.events.description',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+    titleKey: 'services.private.title',
+    descKey: 'services.private.description',
+    image: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>`,
+    titleKey: 'services.workshops.title',
+    descKey: 'services.workshops.description',
+    image: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&q=80',
+  },
+];
 ---
 
-<section id="services" class="py-16 md:py-24 lg:py-28 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12 md:mb-16">
-      <span class="eyebrow">{isEs ? 'Servicios' : 'Services'}</span>
-      <h2 class="font-display text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mt-4">
-        {isEs ? 'Servicios y Precios' : 'Services & Pricing'}
-      </h2>
+<section id="services" class="section-padding bg-white">
+  <div class="container-premium">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="eyebrow fade-up">{t('services.eyebrow')}</span>
+      <h2 class="section-title fade-up stagger-1">{t('services.title')}</h2>
+      <p class="section-subtitle mx-auto fade-up stagger-2">{t('services.subtitle')}</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-      <div class="double-bezel group cursor-pointer relative overflow-hidden">
-        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
-        <div class="double-bezel-inner bg-surface px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 pt-10 md:pt-12 h-full flex flex-col">
-          <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Pase y Pida' : 'Walk-in'}</span>
-          <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Diseño de Mano' : 'Hand Design'}</h3>
-          <p class="text-muted text-sm flex-1">{isEs ? 'Diseño personalizado en una mano' : 'Custom one-hand design'}</p>
-          <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">€30</span>
-            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs">
-              {isEs ? 'Reservar' : 'Book'}
-              <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-            </a>
+    <!-- Services Grid -->
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+      {services.map((service, i) => (
+        <div class={`card-premium group fade-up stagger-${i + 1}`}>
+          <!-- Image -->
+          <div class="relative h-56 overflow-hidden">
+            <img
+              src={service.image}
+              alt={t(service.titleKey)}
+              class="img-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent"></div>
           </div>
-        </div>
-      </div>
 
-      <div class="double-bezel group cursor-pointer relative overflow-hidden">
-        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
-        <div class="double-bezel-inner bg-surface px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8 pt-10 md:pt-12 h-full flex flex-col">
-          <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Pase y Pida' : 'Walk-in'}</span>
-          <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Diseño de Brazo' : 'Arm Design'}</h3>
-          <p class="text-muted text-sm flex-1">{isEs ? 'Diseño personalizado hasta el codo' : 'Custom half-arm design'}</p>
-          <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">€50</span>
-            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs">
-              {isEs ? 'Reservar' : 'Book'}
-              <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-            </a>
+          <!-- Content -->
+          <div class="p-6 lg:p-8">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-gold-muted flex items-center justify-center text-gold-dark shrink-0">
+                <span set:html={service.icon} />
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-semibold text-charcoal mb-1">
+                  {t(service.titleKey)}
+                </h3>
+                <p class="text-sm text-gray leading-relaxed">
+                  {t(service.descKey)}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
+    </div>
 
-      <div class="double-bezel group cursor-pointer relative overflow-hidden">
-        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
-        <div class="double-bezel-inner bg-surface px-8 pb-8 pt-10 h-full flex flex-col">
-          <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Eventos' : 'Events'}</span>
-          <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Henna para Eventos' : 'Event Henna'}</h3>
-          <p class="text-muted text-sm flex-1">{isEs ? 'Henna en vivo para bodas, fiestas y eventos corporativos' : 'Live henna for weddings, parties & corporate events'}</p>
-          <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">€150</span>
-            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs">
-              {isEs ? 'Reservar' : 'Book'}
-              <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="double-bezel group cursor-pointer relative overflow-hidden">
-        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
-        <div class="double-bezel-inner bg-surface px-8 pb-8 pt-10 h-full flex flex-col">
-          <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Clases' : 'Classes'}</span>
-          <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Taller de Henna' : 'Henna Workshop'}</h3>
-          <p class="text-muted text-sm flex-1">{isEs ? 'Aprende el arte de la henna con Hanazz' : 'Learn the art of henna with Hanazz'}</p>
-          <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">€80</span>
-            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs">
-              {isEs ? 'Reservar' : 'Book'}
-              <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="double-bezel group cursor-pointer relative overflow-hidden">
-        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
-        <div class="double-bezel-inner bg-surface px-8 pb-8 pt-10 h-full flex flex-col">
-          <span class="text-[10px] uppercase tracking-[0.2em] text-muted mb-2">{isEs ? 'Personalizado' : 'Custom'}</span>
-          <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Diseño Personalizado' : 'Custom Design'}</h3>
-          <p class="text-muted text-sm flex-1">{isEs ? 'Describe tu visión y Hanazz la hará realidad' : 'Describe your vision and Hanazz brings it to life'}</p>
-          <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">{isEs ? '€60' : '€60'}</span>
-            <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs">
-              {isEs ? 'Reservar' : 'Book'}
-              <span class="icon-wrap !w-6 !h-6"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="double-bezel group cursor-pointer relative overflow-hidden" style="border-color: var(--color-gold);">
-        <div class="absolute top-3 right-3 bg-gold text-bg text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">{isEs ? 'Premium' : 'Premium'}</div>
-        <div class="absolute top-3 left-3 bg-green-700/20 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-green-700/30">{isEs ? '100% Natural' : '100% Natural'}</div>
-        <div class="double-bezel-inner bg-surface px-8 pb-8 pt-10 h-full flex flex-col">
-          <span class="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold mb-2">BYOD</span>
-          <h3 class="font-display text-xl font-semibold mb-2">{isEs ? 'Trae tu Propio Diseño' : 'Bring Your Own Design'}</h3>
-          <p class="text-muted text-sm flex-1">{isEs ? 'Sube tu diseño o concepto y recibe una pieza exclusiva' : 'Upload your design concept for a one-of-a-kind piece'}</p>
-          <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
-            <span class="font-display text-2xl font-bold text-gold">{isEs ? '€100' : '€100'}</span>
-            <a href={`${base}${isEs ? '/es' : ''}/byod`} class="btn-primary !py-1.5 !px-3 !text-[10px]" style="background: var(--color-gold); color: #0A0A0A;">
-              {isEs ? 'Subir Diseño' : 'Upload Design'}
-              <span class="icon-wrap !w-5 !h-5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-            </a>
-          </div>
-        </div>
-      </div>
+    <!-- CTA -->
+    <div class="text-center mt-12 fade-up">
+      <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp text-base">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        {t('services.cta')}
+      </a>
     </div>
   </div>
 </section>

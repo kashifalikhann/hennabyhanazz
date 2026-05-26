@@ -1,51 +1,26 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const lang = 'es';
-const base = import.meta.env.BASE_URL;
-const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
 ---
 
 <BaseLayout title="Aviso Legal" lang={lang}>
-  <div class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
-    <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight mb-8">Aviso Legal</h1>
-    <p class="text-sm text-muted mb-12">Última actualización: mayo 2026</p>
+  <section class="section-padding bg-white">
+    <div class="container-premium max-w-3xl">
+      <h1 class="font-display text-4xl font-semibold text-charcoal mb-8">Aviso Legal</h1>
 
-    <div class="space-y-8 text-muted leading-relaxed">
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">1. Información del Prestador</h2>
-        <p>En cumplimiento de la Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI), facilitamos la siguiente información:</p>
-        <ul class="list-none space-y-1 mt-3">
-          <li><strong>Nombre comercial:</strong> Henna By Hanazz</li>
-          <li><strong>Correo electrónico:</strong> <a href={`mailto:${email}`} class="text-gold underline">{email}</a></li>
-          <li><strong>Ubicación:</strong> Barcelona, España</li>
-        </ul>
-      </section>
+      <div class="prose prose-lg max-w-none text-charcoal-light leading-relaxed space-y-6">
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">Datos Identificativos</h2>
+        <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se informa que el titular de este sitio web es Hanazz, con sede en Barcelona, España.</p>
 
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">2. Condiciones de Uso</h2>
-        <p>Al acceder y utilizar este sitio web, aceptas las siguientes condiciones:</p>
-        <ul class="list-disc pl-5 space-y-2 mt-2">
-          <li>Todo el contenido de este sitio web (texto, imágenes, diseños) es propiedad intelectual de Henna By Hanazz, salvo que se indique lo contrario.</li>
-          <li>No está permitido reproducir, distribuir o modificar ningún contenido sin autorización previa por escrito.</li>
-          <li>Las imágenes de Pexels utilizadas están licenciadas para uso comercial gratuito con atribución.</li>
-          <li>Nos reservamos el derecho de modificar o suspender los servicios sin previo aviso.</li>
-        </ul>
-      </section>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">Condiciones de Uso</h2>
+        <p>El uso de este sitio web implica la aceptación plena de las condiciones aquí expuestas. Queda prohibida la reproducción, distribución o comunicación pública de los contenidos sin autorización previa.</p>
 
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">3. Limitación de Responsabilidad</h2>
-        <p>Henna By Hanazz no se hace responsable de los daños derivados del uso de este sitio web ni de la indisponibilidad temporal por cuestiones técnicas ajenas a nuestro control.</p>
-      </section>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">Propiedad Intelectual</h2>
+        <p>Todos los contenidos del sitio web, incluyendo textos, fotografías y diseños, son propiedad de Henna By Hanazz y están protegidos por la legislación española de propiedad intelectual.</p>
 
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">4. Enlaces Externos</h2>
-        <p>Este sitio contiene enlaces a sitios externos (Instagram, WhatsApp, Google Maps, Stripe). No somos responsables del contenido o prácticas de privacidad de estos terceros.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">5. Legislación Aplicable</h2>
-        <p>Estas condiciones se rigen por la ley española. Cualquier disputa se someterá a los tribunales de Barcelona.</p>
-      </section>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">Legislación Aplicable</h2>
+        <p>Este sitio web se rige por la legislación española. Para cualquier controversia, serán competentes los juzgados y tribunales de Barcelona.</p>
+      </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>

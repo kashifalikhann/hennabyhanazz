@@ -1,50 +1,96 @@
 ---
-import { images } from '../../lib/images';
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
+const t = (key: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      'about.eyebrow': 'The Artist',
+      'about.title': 'Henna mastery, Barcelona soul',
+      'about.p1': 'Hanazz is a professional henna artist based in Barcelona, bringing expertise across Pakistani, Arabic, Indian and fusion styles. With a commitment to 100% natural, PPD-free henna, every design is safe, stunning and deeply personal.',
+      'about.p2': 'From bridal mehndi for destination weddings to intimate private sessions and large-scale celebrations, Hanazz works with each client to create something uniquely theirs.',
+      'about.quote': '"Every line tells a story. My job is to make yours beautiful."',
+      'about.services_label': 'Services include:',
+      'about.service_1': 'Bridal & wedding henna',
+      'about.service_2': 'Event & party henna',
+      'about.service_3': 'Private sessions',
+      'about.service_4': 'Henna workshops',
+      'about.service_5': 'Event decorations',
+    },
+    es: {
+      'about.eyebrow': 'La Artista',
+      'about.title': 'Maestría en henna, alma de Barcelona',
+      'about.p1': 'Hanazz es una artista profesional de henna con sede en Barcelona, con experiencia en estilos pakistaní, árabe, indio y fusión. Comprometida con la henna 100% natural y libre de PPD, cada diseño es seguro, impresionante y profundamente personal.',
+      'about.p2': 'Desde mehndi nupcial para bodas de destino hasta sesiones privadas íntimas y celebraciones a gran escala, Hanazz trabaja con cada cliente para crear algo único.',
+      'about.quote': '"Cada línea cuenta una historia. Mi trabajo es hacer la tuya hermosa."',
+      'about.services_label': 'Los servicios incluyen:',
+      'about.service_1': 'Henna nupcial y para bodas',
+      'about.service_2': 'Henna para eventos y fiestas',
+      'about.service_3': 'Sesiones privadas',
+      'about.service_4': 'Talleres de henna',
+      'about.service_5': 'Decoración de eventos',
+    }
+  };
+  return translations[lang]?.[key] || key;
+};
+
+const services = [
+  t('about.service_1'),
+  t('about.service_2'),
+  t('about.service_3'),
+  t('about.service_4'),
+  t('about.service_5'),
+];
 ---
 
-<section id="about" class="py-16 md:py-24 lg:py-28 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-      <div class="space-y-6">
-        <span class="eyebrow">{isEs ? 'La Artista' : 'The Artist'}</span>
-        <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tight">
-          {isEs ? 'Henna con herencia de Lahore' : 'Henna with Lahore heritage'}
-        </h2>
-        <div class="w-12 h-0.5 bg-gold"></div>
-        <p class="text-muted leading-relaxed text-lg">
-          {isEs
-            ? 'Hanazz, originaria de Lahore, Pakistan, aporta 18 anos de maestria en henna a Barcelona. Formada en la rica tradicion Mughal del arte de la mehndi, ha creado mas de 500 disenos — desde intrincados patrones nupciales hasta piezas contemporaneas minimalistas.'
-            : 'Hanazz, from Lahore, Pakistan, brings 18 years of henna mastery to Barcelona. Trained in the rich Mughal tradition of mehndi art, she has created over 500 designs — from intricate bridal patterns to contemporary minimalist pieces.'}
-        </p>
-        <p class="text-muted leading-relaxed">
-          {isEs
-            ? 'Cada diseno utiliza henna 100% natural, libre de PPD y aditivos quimicos — una tradicion que se remonta a la corte Mughal, donde la henna alcanzo su maxima expresion artistica.'
-            : 'Every design uses 100% natural henna, free from PPD and chemical additives — a tradition that traces back to the Mughal court, where henna reached its highest artistic expression.'}
-        </p>
-        <p class="text-muted leading-relaxed italic text-sm border-l-2 border-gold/30 pl-4">
-          {isEs
-            ? '"La henna no tiene color hasta que llega al Hindustan" — proverbio Mughal del siglo XVII'
-            : '"Henna has no colour until it comes to Hindustan" — 17th-century Mughal proverb'}
-        </p>
+<section id="about" class="section-padding bg-cream">
+  <div class="container-premium">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Image -->
+      <div class="relative fade-up">
+        <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80"
+            alt={isEs ? 'Hanazz, artista profesional de henna en Barcelona' : 'Hanazz, professional henna artist in Barcelona'}
+            class="img-cover"
+            loading="lazy"
+          />
+        </div>
+        <!-- Accent element -->
+        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-gold-muted rounded-2xl -z-10"></div>
       </div>
 
-      <div class="relative">
-        <div class="double-bezel">
-          <div class="double-bezel-inner aspect-[4/5] overflow-hidden">
-            <img
-              src={images.about.src}
-              alt={images.about.alt}
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
+      <!-- Content -->
+      <div class="max-w-lg">
+        <span class="eyebrow fade-up">{t('about.eyebrow')}</span>
+        <h2 class="section-title fade-up stagger-1">{t('about.title')}</h2>
+
+        <p class="text-gray leading-relaxed mb-6 fade-up stagger-2">
+          {t('about.p1')}
+        </p>
+
+        <p class="text-gray leading-relaxed mb-8 fade-up stagger-2">
+          {t('about.p2')}
+        </p>
+
+        <!-- Quote -->
+        <blockquote class="border-l-2 border-gold pl-6 py-2 mb-8 fade-up stagger-3">
+          <p class="font-display text-lg italic text-charcoal-light">
+            {t('about.quote')}
+          </p>
+        </blockquote>
+
+        <!-- Services list -->
+        <div class="fade-up stagger-4">
+          <p class="text-sm font-semibold text-charcoal mb-3">{t('about.services_label')}</p>
+          <div class="flex flex-wrap gap-2">
+            {services.map((service) => (
+              <span class="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-gold-muted text-gold-dark">
+                {service}
+              </span>
+            ))}
           </div>
         </div>
-        <div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-gold/10 -z-10 blur-3xl"></div>
-        <p class="text-[10px] text-muted/50 text-right mt-2">
-          {isEs ? 'Foto por' : 'Photo by'} <a href={images.about.creditUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-gold transition-colors">{images.about.credit}</a> {isEs ? 'en Pexels' : 'on Pexels'}
-        </p>
       </div>
     </div>
   </div>

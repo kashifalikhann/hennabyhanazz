@@ -1,51 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const lang = 'en';
-const base = import.meta.env.BASE_URL;
-const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
 ---
 
 <BaseLayout title="Legal Notice" lang={lang}>
-  <div class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
-    <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight mb-8">Legal Notice</h1>
-    <p class="text-sm text-muted mb-12">Last updated: May 2026</p>
+  <section class="section-padding bg-white">
+    <div class="container-premium max-w-3xl">
+      <h1 class="font-display text-4xl font-semibold text-charcoal mb-8">Legal Notice</h1>
 
-    <div class="space-y-8 text-muted leading-relaxed">
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">1. Business Information</h2>
-        <p>In compliance with Law 34/2002 on Information Society Services and Electronic Commerce (LSSI), we provide the following information:</p>
-        <ul class="list-none space-y-1 mt-3">
-          <li><strong>Business name:</strong> Henna By Hanazz</li>
-          <li><strong>Contact email:</strong> <a href={`mailto:${email}`} class="text-gold underline">{email}</a></li>
-          <li><strong>Location:</strong> Barcelona, Spain</li>
-        </ul>
-      </section>
+      <div class="prose prose-lg max-w-none text-charcoal-light leading-relaxed space-y-6">
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">Identifying Information</h2>
+        <p>In compliance with Article 10 of Law 34/2002, of July 11, on Information Society Services and Electronic Commerce, the owner of this website is Hanazz, based in Barcelona, Spain.</p>
 
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">2. Terms of Use</h2>
-        <p>By accessing and using this website, you accept the following terms:</p>
-        <ul class="list-disc pl-5 space-y-2 mt-2">
-          <li>All content on this website (text, images, designs) is the intellectual property of Henna By Hanazz unless otherwise credited.</li>
-          <li>You may not reproduce, distribute, or modify any content without prior written permission.</li>
-          <li>Pexels images used on this site are licensed for free commercial use with attribution as required.</li>
-          <li>We reserve the right to modify or discontinue services without prior notice.</li>
-        </ul>
-      </section>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">Terms of Use</h2>
+        <p>Use of this website implies full acceptance of the conditions set forth herein. Reproduction, distribution or public communication of the contents is prohibited without prior authorization.</p>
 
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">3. Limitation of Liability</h2>
-        <p>Henna By Hanazz is not liable for damages arising from the use of this website or from temporary unavailability due to technical issues beyond our control. We make every effort to keep the site operational but cannot guarantee uninterrupted access.</p>
-      </section>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">Intellectual Property</h2>
+        <p>All contents of the website, including texts, photographs and designs, are the property of Henna By Hanazz and are protected by Spanish intellectual property legislation.</p>
 
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">4. External Links</h2>
-        <p>This website contains links to external sites (Instagram, WhatsApp, Google Maps, Stripe). We are not responsible for the content or privacy practices of these third-party sites.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">5. Governing Law</h2>
-        <p>These terms are governed by Spanish law. Any disputes shall be submitted to the courts of Barcelona.</p>
-      </section>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">Applicable Law</h2>
+        <p>This website is governed by Spanish law. For any dispute, the courts of Barcelona shall have jurisdiction.</p>
+      </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>

@@ -1,58 +1,57 @@
+// Premium henna images for the website
+// Replace these Unsplash placeholders with Hanazz's actual photos when available
+
 export const images = {
+  hero: {
+    src: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
+    alt: 'Intricate henna design on hands — Henna By Hanazz Barcelona',
+  },
   about: {
-    src: 'https://images.pexels.com/photos/34619221/pexels-photo-34619221.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    credit: 'Abdullah Malik',
-    creditUrl: 'https://www.pexels.com/@abdullah-malik-1808651585',
-    alt: 'Badshahi Mosque minaret in Lahore, showcasing Mughal architecture',
+    src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80',
+    alt: 'Hanazz, professional henna artist in Barcelona',
   },
-  experience: {
-    src: 'https://images.pexels.com/photos/18972911/pexels-photo-18972911.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    credit: 'Sam Clickx',
-    creditUrl: 'https://www.pexels.com/@sam-clickx-24038849',
-    alt: 'Intricate henna design being applied to an arm',
-  },
-  location: {
-    src: 'https://images.pexels.com/photos/10936417/pexels-photo-10936417.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    credit: 'Tatyana Shcheblanova',
-    creditUrl: 'https://www.pexels.com/@81016976',
-    alt: 'Pont del Bisbe in Barcelona\'s Gothic Quarter',
+  services: {
+    bridal: {
+      src: 'https://images.unsplash.com/photo-1590012314607-20e25d5ad998?w=600&q=80',
+      alt: 'Bridal henna design — Pakistani, Arabic, Indian styles',
+    },
+    events: {
+      src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
+      alt: 'Event and party henna — live henna station',
+    },
+    private: {
+      src: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80',
+      alt: 'Private henna session — Barcelona studio or home service',
+    },
+    workshops: {
+      src: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&q=80',
+      alt: 'Henna workshop — learn the art of henna',
+    },
   },
   gallery: [
     {
-      src: 'https://images.pexels.com/photos/11925938/pexels-photo-11925938.jpeg?auto=compress&cs=tinysrgb&w=800',
-      credit: 'Qazi Ikram Haq',
-      creditUrl: 'https://www.pexels.com/@qazi',
-      alt: 'Detailed henna designs on outstretched palms',
+      src: 'https://images.unsplash.com/photo-1590012314607-20e25d5ad998?w=600&q=80',
+      alt: 'Bridal henna design by Hanazz — Barcelona',
     },
     {
-      src: 'https://images.pexels.com/photos/1199605/pexels-photo-1199605.jpeg?auto=compress&cs=tinysrgb&w=800',
-      credit: 'Qazi Ikram Haq',
-      creditUrl: 'https://www.pexels.com/@qazi',
-      alt: 'Henna adorned hands with jewelry at a Pakistani wedding in Lahore',
+      src: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80',
+      alt: 'Intricate henna pattern on hands',
     },
     {
-      src: 'https://images.pexels.com/photos/20630193/pexels-photo-20630193.jpeg?auto=compress&cs=tinysrgb&w=800',
-      credit: 'Karia Kalash',
-      creditUrl: 'https://www.pexels.com/@kalashkaria',
-      alt: 'Hands with henna and bangles in traditional dress from Pakistan',
+      src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80',
+      alt: 'Henna artist at work — Barcelona',
     },
     {
-      src: 'https://images.pexels.com/photos/24486697/pexels-photo-24486697.jpeg?auto=compress&cs=tinysrgb&w=800',
-      credit: 'Sohail Raza',
-      creditUrl: 'https://www.pexels.com/@sohailh1',
-      alt: 'Detailed henna design on hands in natural light',
+      src: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80',
+      alt: 'Beautiful henna patterns and designs',
     },
     {
-      src: 'https://images.pexels.com/photos/12872534/pexels-photo-12872534.jpeg?auto=compress&cs=tinysrgb&w=800',
-      credit: 'Tauseef Khaliq',
-      creditUrl: 'https://www.pexels.com/@tauseefkhaliq',
-      alt: 'Intricate henna designs on hands with traditional motifs',
+      src: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&q=80',
+      alt: 'Henna workshop session — Barcelona',
     },
     {
-      src: 'https://images.pexels.com/photos/12872532/pexels-photo-12872532.jpeg?auto=compress&cs=tinysrgb&w=800',
-      credit: 'Tauseef Khaliq',
-      creditUrl: 'https://www.pexels.com/@tauseefkhaliq',
-      alt: 'Henna patterns on hands with dark background',
+      src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
+      alt: 'Wedding henna celebration — destination wedding',
     },
   ],
 };

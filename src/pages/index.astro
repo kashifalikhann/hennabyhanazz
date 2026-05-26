@@ -2,28 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import About from '../components/sections/About.astro';
-import Experience from '../components/sections/Experience.astro';
 import Services from '../components/sections/Services.astro';
 import Gallery from '../components/sections/Gallery.astro';
-import HowItWorks from '../components/sections/HowItWorks.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
-import Location from '../components/sections/Location.astro';
 import FAQ from '../components/sections/FAQ.astro';
-import LeadMagnet from '../components/sections/LeadMagnet.astro';
 
 const lang = 'en';
 ---
 
-<BaseLayout title="Home" lang={lang}>
+<BaseLayout
+  title="Henna By Hanazz — Professional Henna Artist Barcelona"
+  lang={lang}
+>
   <Hero lang={lang} />
   <About lang={lang} />
-  <Experience lang={lang} />
   <Services lang={lang} />
   <Gallery lang={lang} />
-  <HowItWorks lang={lang} />
   <Testimonials lang={lang} />
-  <Location lang={lang} />
-  <LeadMagnet lang={lang} />
   <FAQ lang={lang} />
-  <div id="cta-section" />
 </BaseLayout>

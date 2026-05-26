@@ -1,142 +1,130 @@
 ---
-const { lang = 'en' } = Astro.props;
+const { lang = 'en', whatsappNumber, instagramUrl } = Astro.props;
 const isEs = lang === 'es';
-const t = (key: string) => isEs ? {
-  'nav.gallery': 'Galería', 'nav.services': 'Servicios', 'nav.book': 'Reservar', 'nav.about': 'Sobre Mí', 'nav.gifts': 'Regalos', 'nav.mybooking': 'Mi Reserva'
-}[key] || key : {
-  'nav.gallery': 'Gallery', 'nav.services': 'Services', 'nav.book': 'Book', 'nav.about': 'About', 'nav.gifts': 'Gifts', 'nav.mybooking': 'My Booking'
-}[key] || key;
-const base = import.meta.env.BASE_URL;
+const t = (key: string) => {
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      'nav.home': 'Home',
+      'nav.about': 'About',
+      'nav.services': 'Services',
+      'nav.gallery': 'Gallery',
+      'nav.book': 'Book Now',
+      'nav.faq': 'FAQ',
+    },
+    es: {
+      'nav.home': 'Inicio',
+      'nav.about': 'Sobre Mí',
+      'nav.services': 'Servicios',
+      'nav.gallery': 'Galería',
+      'nav.book': 'Reservar',
+      'nav.faq': 'FAQ',
+    }
+  };
+  return translations[lang]?.[key] || key;
+};
+
+const basePath = isEs ? '/es' : '';
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isEs ? 'Hola, me gustaría reservar una sesión de henna' : 'Hello, I would like to book a henna session')}`;
 ---
 
-<nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="padding-top: calc(1rem + env(safe-area-inset-top, 0px))">
-  <div class="glass flex items-center gap-6 rounded-full px-5 py-2.5 md:px-8 md:py-3 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" id="nav-inner">
-    <a href={base} class="font-display text-sm font-semibold tracking-tight whitespace-nowrap">
-      <span class="text-gold">✦</span> Hanazz
-    </a>
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+  <div class="container-premium">
+    <div class="flex items-center justify-between h-16 md:h-20">
 
-    <div class="hidden md:flex items-center gap-6" id="nav-links">
-      <a href={`${base}${isEs ? '/es' : ''}/#gallery`} class="text-sm text-muted hover:text-text transition-colors duration-300">{t('nav.gallery')}</a>
-      <a href={`${base}${isEs ? '/es' : ''}/#services`} class="text-sm text-muted hover:text-text transition-colors duration-300">{t('nav.services')}</a>
-      <a href={`${base}${isEs ? '/es' : ''}/#about`} class="text-sm text-muted hover:text-text transition-colors duration-300">{t('nav.about')}</a>
-      <a href={`${base}${isEs ? '/es' : ''}/gallery`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden lg:inline">{t('nav.gallery')}</a>
-      <a href={`${base}${isEs ? '/es' : ''}/gift-certificate`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden lg:inline">{t('nav.gifts')}</a>
-      <a href={`${base}${isEs ? '/es' : ''}/my-booking`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden lg:inline">{t('nav.mybooking')}</a>
-      <a href={`${base}${isEs ? '/es/privacidad' : '/privacy'}`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden xl:inline">{isEs ? 'Privacidad' : 'Privacy'}</a>
-      <a href={`${base}${isEs ? '/es/aviso-legal' : '/legal'}`} class="text-sm text-muted hover:text-text transition-colors duration-300 hidden xl:inline">{isEs ? 'Aviso Legal' : 'Legal'}</a>
-      <a href={`${base}${isEs ? '/es' : ''}/book`} class="btn-primary !py-1.5 !px-4 !text-xs whitespace-nowrap">
-        {t('nav.book')}
-        <span class="icon-wrap !w-6 !h-6">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <!-- Logo -->
+      <a href={`${basePath || '/'}`} class="flex items-center gap-2 no-underline">
+        <span class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">
+          Henna<span class="text-gold-dark">.</span>
         </span>
       </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href={`${basePath || '/'}`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.home')}</a>
+        <a href={`${basePath}/#about`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.about')}</a>
+        <a href={`${basePath}/#services`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.services')}</a>
+        <a href={`${basePath}/#gallery`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.gallery')}</a>
+        <a href={`${basePath}/#faq`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.faq')}</a>
+      </div>
+
+      <!-- Right side: Lang toggle + CTA -->
+      <div class="flex items-center gap-3">
+        <!-- Language Toggle -->
+        <div class="lang-toggle">
+          <a
+            href={isEs ? Astro.url.pathname.replace(/^\/es/, '') || '/' : `/es${Astro.url.pathname}`}
+            class={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${isEs ? 'bg-white text-charcoal shadow-sm' : 'text-gray-light hover:text-charcoal'}`}
+          >
+            EN
+          </a>
+          <a
+            href={isEs ? Astro.url.pathname.replace(/^\/es/, '') || '/' : `/es${Astro.url.pathname}`}
+            class={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${!isEs ? 'bg-white text-charcoal shadow-sm' : 'text-gray-light hover:text-charcoal'}`}
+          >
+            ES
+          </a>
+        </div>
+
+        <!-- WhatsApp CTA (desktop) -->
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden md:inline-flex items-center gap-2 btn-whatsapp text-sm"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          {t('nav.book')}
+        </a>
+
+        <!-- Mobile menu button -->
+        <button class="md:hidden p-2 text-charcoal" id="mobileMenuBtn" aria-label="Menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/>
+          </svg>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <div class="flex items-center gap-2">
-      <button aria-label={isEs ? 'Cambiar idioma' : 'Switch language'} id="lang-toggle" class="text-xs text-muted hover:text-text transition-colors duration-300 px-2 py-1 rounded-full border border-border">
-        {isEs ? 'EN' : 'ES'}
-      </button>
-
-      <button aria-label="Toggle theme" id="theme-toggle" class="text-muted hover:text-text transition-colors duration-300 p-1.5">
-        <svg class="dark-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-        <svg class="light-icon hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-        </svg>
-      </button>
-
-      <button id="mobile-menu-btn" class="md:hidden flex flex-col items-center justify-center gap-1 w-11 h-11" aria-label="Menu">
-        <span class="block w-5 h-[1.5px] bg-text transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-        <span class="block w-5 h-[1.5px] bg-text transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-        <span class="block w-5 h-[1.5px] bg-text transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-      </button>
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-cream border-t border-border" id="mobileMenu">
+    <div class="container-premium py-6 flex flex-col gap-4">
+      <a href={`${basePath || '/'}`} class="text-base font-medium text-charcoal py-2">{t('nav.home')}</a>
+      <a href={`${basePath}/#about`} class="text-base font-medium text-charcoal py-2">{t('nav.about')}</a>
+      <a href={`${basePath}/#services`} class="text-base font-medium text-charcoal py-2">{t('nav.services')}</a>
+      <a href={`${basePath}/#gallery`} class="text-base font-medium text-charcoal py-2">{t('nav.gallery')}</a>
+      <a href={`${basePath}/#faq`} class="text-base font-medium text-charcoal py-2">{t('nav.faq')}</a>
+      <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp text-center mt-2">
+        {t('nav.book')}
+      </a>
     </div>
   </div>
 </nav>
 
-<div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/80 backdrop-blur-3xl flex items-start justify-center pt-24 opacity-0 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-  <div class="flex flex-col items-center gap-8 text-2xl font-display mt-8">
-    <a href={`${base}${isEs ? '/es' : ''}/#gallery`} class="translate-y-12 opacity-0 transition-all duration-700 delay-100 mobile-link">{t('nav.gallery')}</a>
-    <a href={`${base}${isEs ? '/es' : ''}/#services`} class="translate-y-12 opacity-0 transition-all duration-700 delay-150 mobile-link">{t('nav.services')}</a>
-    <a href={`${base}${isEs ? '/es' : ''}/#about`} class="translate-y-12 opacity-0 transition-all duration-700 delay-200 mobile-link">{t('nav.about')}</a>
-    <a href={`${base}${isEs ? '/es' : ''}/gallery`} class="translate-y-12 opacity-0 transition-all duration-700 delay-250 mobile-link">{t('nav.gallery')}</a>
-    <a href={`${base}${isEs ? '/es' : ''}/gift-certificate`} class="translate-y-12 opacity-0 transition-all duration-700 delay-300 mobile-link">{t('nav.gifts')}</a>
-    <a href={`${base}${isEs ? '/es' : ''}/my-booking`} class="translate-y-12 opacity-0 transition-all duration-700 delay-350 mobile-link">{t('nav.mybooking')}</a>
-    <a href={`${base}${isEs ? '/es/privacidad' : '/privacy'}`} class="translate-y-12 opacity-0 transition-all duration-700 delay-400 mobile-link">{isEs ? 'Privacidad' : 'Privacy'}</a>
-    <a href={`${base}${isEs ? '/es/aviso-legal' : '/legal'}`} class="translate-y-12 opacity-0 transition-all duration-700 delay-[450ms] mobile-link">{isEs ? 'Aviso Legal' : 'Legal'}</a>
-    <a href={`${base}${isEs ? '/es' : ''}/book`} class="translate-y-12 opacity-0 transition-all duration-700 delay-500 mobile-link">{t('nav.book')}</a>
-  </div>
-</div>
-
 <script>
-  const nav = document.getElementById('site-nav');
-  const navInner = document.getElementById('nav-inner');
-  const themeToggle = document.getElementById('theme-toggle');
-  const mobileBtn = document.getElementById('mobile-menu-btn');
-  const mobileOverlay = document.getElementById('mobile-overlay');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-  const langToggle = document.getElementById('lang-toggle');
-
-  let isOpen = false;
-
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY > 100;
-    navInner.style.transform = scrolled ? 'scale(0.85)' : 'scale(1)';
-    navInner.style.borderRadius = scrolled ? '9999px' : '9999px';
-  });
-
-  themeToggle?.addEventListener('click', () => {
-    const isLight = document.documentElement.classList.toggle('light');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    document.querySelector('.dark-icon')?.classList.toggle('hidden', isLight);
-    document.querySelector('.light-icon')?.classList.toggle('hidden', !isLight);
-  });
-
-  if (localStorage.getItem('theme') === 'light') {
-    document.documentElement.classList.add('light');
-    document.querySelector('.dark-icon')?.classList.add('hidden');
-    document.querySelector('.light-icon')?.classList.remove('hidden');
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
   }
 
-  mobileBtn?.addEventListener('click', () => {
-    isOpen = !isOpen;
-    const bars = mobileBtn.querySelectorAll('span');
-    if (isOpen) {
-      mobileOverlay.classList.remove('opacity-0', 'pointer-events-none');
-      bars[0].style.transform = 'rotate(45deg) translate(3px, 3px)';
-      bars[1].style.opacity = '0';
-      bars[2].style.transform = 'rotate(-45deg) translate(3px, -3px)';
-      mobileLinks.forEach(l => { l.style.transform = 'translateY(0)'; l.style.opacity = '1'; });
-    } else {
-      mobileOverlay.classList.add('opacity-0', 'pointer-events-none');
-      bars[0].style.transform = '';
-      bars[1].style.opacity = '';
-      bars[2].style.transform = '';
-      mobileLinks.forEach(l => { l.style.transform = ''; l.style.opacity = ''; });
-    }
-  });
-
-  mobileOverlay?.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      isOpen = false;
-      mobileOverlay.classList.add('opacity-0', 'pointer-events-none');
-      const bars = mobileBtn.querySelectorAll('span');
-      bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
-      mobileLinks.forEach(l => { l.style.transform = ''; l.style.opacity = ''; });
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('shadow-sm');
+      } else {
+        navbar.classList.remove('shadow-sm');
+      }
     });
-  });
-
-  langToggle?.addEventListener('click', () => {
-    const path = window.location.pathname;
-    const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-    const esPrefix = base + '/es';
-    if (path.startsWith(esPrefix)) {
-      window.location.href = path.replace(esPrefix, base) || base;
-    } else if (path === base + '/es') {
-      window.location.href = base;
-    } else {
-      window.location.href = esPrefix + path.replace(base, '') || esPrefix;
-    }
-  });
+  }
 </script>
+
+<!-- Spacer for fixed nav -->
+<div class="h-16 md:h-20"></div>

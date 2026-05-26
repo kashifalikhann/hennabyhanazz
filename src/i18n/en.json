@@ -1,23 +1,134 @@
 {
-  nav: { gallery: 'Gallery', services: 'Services', book: 'Book', about: 'About', contact: 'Contact' },
-  hero: { headline: 'Henna By Hanazz', subhead: "Barcelona's Premier Henna Artistry", cta: 'Book Your Experience' },
-  about: { badge: 'The Artist', para1: 'Every henna design tells a story. Based in the heart of Barcelona, Hanazz brings centuries of tradition into every intricate pattern.', para2: 'From intimate gatherings to grand celebrations, each design is a unique expression of beauty and culture.' },
-  experience: { badge: 'The Experience', title: 'More Than Henna', para: 'Step into our serene Gothic Quarter studio. Feel the warmth of tradition, the precision of art, and the joy of transformation.' },
-  services: { title: 'Services & Pricing', all: 'All', walkin: 'Walk-in', events: 'Events', classes: 'Classes', custom: 'Custom', byod: 'BYOD Premium', byodLabel: 'Bring Your Own Design', byodDesc: 'Submit your own design concept for a custom piece', bookNow: 'Book Now', inquire: 'Inquire', from: 'from', consultRequired: 'Consultation Required' },
-  how: { title: 'How It Works', standard: 'Standard Booking', premium: 'Premium BYOD', step1: 'Choose Your Design', step1Desc: 'Browse our menu of beautiful designs', step2: 'Pick Your Date', step2Desc: 'Select your preferred date and time', step3: 'Secure Your Spot', step3Desc: 'Pay full or 50% deposit', pStep1: 'Submit Your Design', pStep1Desc: 'Upload your concept or describe your vision', pStep2: 'Free Consultation', pStep2Desc: 'Hanazz reviews and provides expert input', pStep3: 'Receive Quote', pStep3Desc: 'Custom pricing based on complexity', pStep4: 'Pay Deposit', pStep4Desc: '50% to confirm your booking', pStep5: 'Your Appointment', pStep5Desc: 'Date confirmed after deposit' },
-  gallery: { title: 'Portfolio', follow: 'Follow @hennabyhanazz on Instagram', view: 'View on Instagram' },
-  testimonials: { title: 'What Clients Say' },
-  location: { title: 'Find Us', address: 'Barcelona, Spain', getDirections: 'Get Directions', whatsapp: 'Contact via WhatsApp' },
-  faq: { title: 'FAQ', booking: 'Booking & Payments', servicesTitle: 'Services', locationTitle: 'Location & Hours', search: 'Search questions...' },
-  cta: { title: 'Ready for Your Henna Experience?', subtitle: 'Book your appointment today and discover the art of henna.', button: 'Book Now' },
-  footer: { rights: 'All rights reserved.', follow: 'Follow Us' },
-  booking: { title: 'Book Your Appointment', service: 'Select Service', date: 'Pick a Date', time: 'Pick a Time', pay: 'Payment', fullPayment: 'Pay Full Amount', depositPayment: 'Pay 50% Deposit', confirm: 'Confirm Booking', name: 'Full Name', email: 'Email Address', phone: 'Phone Number', notes: 'Special Requests', submit: 'Complete Booking' },
-  myBooking: { title: 'My Booking', lookup: 'Enter your email and booking code to view your appointment', email: 'Email', code: 'Booking Code', search: 'Look Up', notFound: 'No booking found.' },
-  gift: { title: 'Gift a Henna Experience', subtitle: 'Give the gift of henna artistry', amount: 'Amount', customAmount: 'Custom Amount', purchase: 'Purchase Gift Certificate' },
-  admin: { title: 'Admin Dashboard', bookings: 'Bookings', inquiries: 'Inquiries', gallery: 'Gallery', servicesManage: 'Services', logout: 'Logout' },
-  error: { notFound: 'Page not found', home: 'Go Home' },
-  theme: { light: 'Light', dark: 'Dark' },
-  language: { switch: 'Español' },
-  whatsapp: 'Chat on WhatsApp',
-  backToTop: 'Back to top',
-};
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "gallery": "Gallery",
+    "book": "Book Now",
+    "faq": "FAQ"
+  },
+
+  "hero": {
+    "eyebrow": "Professional Henna Artist",
+    "title": "Henna By Hanazz",
+    "subtitle": "100% natural henna artistry in the heart of Barcelona. Pakistani, Arabic, Indian & fusion styles — for brides, events and private sessions.",
+    "cta_primary": "Book via WhatsApp",
+    "cta_secondary": "View Our Work",
+    "badge_1": "100% Natural · PPD Free",
+    "badge_2": "Bridal · Events · Private",
+    "badge_3": "Barcelona & Destination"
+  },
+
+  "about": {
+    "eyebrow": "The Artist",
+    "title": "Henna mastery, Barcelona soul",
+    "p1": "Hanazz is a professional henna artist based in Barcelona, bringing expertise across Pakistani, Arabic, Indian and fusion styles. With a commitment to 100% natural, PPD-free henna, every design is safe, stunning and deeply personal.",
+    "p2": "From bridal mehndi for destination weddings to intimate private sessions and large-scale celebrations, Hanazz works with each client to create something uniquely theirs.",
+    "quote": "\"Every line tells a story. My job is to make yours beautiful.\"",
+    "services_label": "Services include:",
+    "service_1": "Bridal & wedding henna",
+    "service_2": "Event & party henna",
+    "service_3": "Private sessions",
+    "service_4": "Henna workshops",
+    "service_5": "Event decorations"
+  },
+
+  "services": {
+    "eyebrow": "Services",
+    "title": "Henna for every occasion",
+    "subtitle": "Each design is custom-created. Pricing depends on design complexity, size and location — contact us for a personalised quote.",
+    "bridal": {
+      "title": "Bridal Henna",
+      "description": "Intricate, bespoke bridal mehndi for your most important day. Arabic, Pakistani, Indian or fusion styles."
+    },
+    "events": {
+      "title": "Events & Parties",
+      "description": "Live henna stations for weddings, cultural events, corporate gatherings and celebrations of all sizes."
+    },
+    "private": {
+      "title": "Private Sessions",
+      "description": "A calm, personalised henna experience at our Barcelona studio or at your home."
+    },
+    "workshops": {
+      "title": "Workshops",
+      "description": "Learn the art of henna. Group or private workshops for all levels."
+    },
+    "cta": "Enquire Now"
+  },
+
+  "gallery": {
+    "eyebrow": "Portfolio",
+    "title": "Our Work",
+    "subtitle": "Every design is unique. Browse a selection of recent work.",
+    "follow_us": "Follow @hennabyhanazz on Instagram"
+  },
+
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "What our clients say",
+    "t1": {
+      "text": "Hanazz made my bridal henna absolutely beautiful. The design was exactly what I wanted and she was so professional throughout.",
+      "name": "Sarah M.",
+      "role": "Bride, Barcelona"
+    },
+    "t2": {
+      "text": "We hired Hanazz for our wedding guests and everyone loved it. She was fast, gentle and the designs were stunning.",
+      "name": "Amira K.",
+      "role": "Wedding, Costa Brava"
+    },
+    "t3": {
+      "text": "The workshop was incredible. Hanazz is a patient teacher and I learned so much in just one session.",
+      "name": "Laura R.",
+      "role": "Workshop, Barcelona"
+    },
+    "note": "More reviews coming soon. Be the first to leave yours!"
+  },
+
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Frequently Asked Questions",
+    "q1": {
+      "q": "What styles of henna do you offer?",
+      "a": "I specialise in Pakistani, Arabic, Indian and fusion styles. Every design is custom-created based on your preference and the style that suits you best."
+    },
+    "q2": {
+      "q": "Is your henna safe?",
+      "a": "Absolutely. I use 100% natural henna with no PPD, no chemicals and no additives. It's safe for all skin types."
+    },
+    "q3": {
+      "q": "Do you travel to the client?",
+      "a": "Yes, I offer home service throughout Barcelona and the surrounding area. I also travel for destination weddings."
+    },
+    "q4": {
+      "q": "How far in advance should I book bridal henna?",
+      "a": "I recommend booking at least 2-3 months in advance for bridal work, especially during wedding season."
+    },
+    "q5": {
+      "q": "Do you offer henna for events?",
+      "a": "Yes, I provide live henna stations for weddings, parties, corporate events and cultural celebrations."
+    },
+    "q6": {
+      "q": "How do I book and pay?",
+      "a": "You can book directly via WhatsApp. Payment can be made via Bizum, bank transfer or cash."
+    }
+  },
+
+  "cta_section": {
+    "title": "Ready to create something beautiful?",
+    "subtitle": "Get in touch for a personalised quote or to check availability.",
+    "whatsapp": "WhatsApp Us",
+    "instagram": "Follow on Instagram",
+    "bizum_label": "Or pay via Bizum:",
+    "bizum_number": "+34 XXX XXX XXX"
+  },
+
+  "footer": {
+    "tagline": "Professional Henna Artist, Barcelona",
+    "services": "Services",
+    "connect": "Connect",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "copyright": "© 2025 Henna By Hanazz. All rights Reserved."
+  }
+}

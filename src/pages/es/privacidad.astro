@@ -1,83 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const lang = 'es';
-const base = import.meta.env.BASE_URL;
-const email = import.meta.env.PUBLIC_CONTACT_EMAIL;
 ---
 
 <BaseLayout title="Política de Privacidad" lang={lang}>
-  <div class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
-    <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight mb-8">Política de Privacidad</h1>
-    <p class="text-sm text-muted mb-12">Última actualización: mayo 2026</p>
-
-    <div class="space-y-8 text-muted leading-relaxed">
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">1. Quiénes Somos</h2>
-        <p>Henna By Hanazz es un servicio de arte de henna con sede en Barcelona, España. Esta política explica cómo recopilamos, usamos y protegemos tus datos personales.</p>
-        <p class="mt-2">Contacto: <a href={`mailto:${email}`} class="text-gold underline">{email}</a></p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">2. Datos que Recopilamos</h2>
-        <ul class="list-disc pl-5 space-y-2">
-          <li><strong>Información de reserva:</strong> nombre, correo electrónico, teléfono y solicitudes especiales.</li>
-          <li><strong>Suscripción al boletín:</strong> correo electrónico cuando te suscribes a nuestra guía o marketing.</li>
-          <li><strong>Datos de uso:</strong> analíticas anonimizadas a través de Google Analytics y Facebook Pixel (solo con tu consentimiento).</li>
-          <li><strong>Datos de pago:</strong> procesados por Stripe — nunca almacenamos tu información de tarjeta.</li>
+  <section class="section-padding bg-white">
+    <div class="container-premium max-w-3xl">
+      <h1 class="font-display text-4xl font-semibold text-charcoal mb-8">Política de Privacidad</h1>
+      <p class="text-sm text-gray-light mb-8">Última actualización: Mayo 2026</p>
+      <div class="prose prose-lg max-w-none text-charcoal-light leading-relaxed space-y-6">
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">1. Quiénes Somos</h2>
+        <p>Henna By Hanazz es un servicio profesional de henna con sede en Barcelona, España. Esta política de privacidad explica cómo recopilamos, usamos y protegemos tus datos personales.</p>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">2. Datos que Recopilamos</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Información de reservas:</strong> nombre, email, teléfono y solicitudes especiales.</li>
+          <li><strong>Datos de uso:</strong> analítica anónima mediante Google Analytics (solo con tu consentimiento).</li>
+          <li><strong>Datos de pago:</strong> los pagos se procesan por Bizum o transferencia bancaria — no almacenamos información financiera.</li>
         </ul>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">3. Base Legal para el Tratamiento</h2>
-        <ul class="list-disc pl-5 space-y-2">
-          <li><strong>Ejecución del contrato:</strong> procesar tu reserva y enviar confirmaciones.</li>
-          <li><strong>Consentimiento:</strong> boletines, analíticas y cookies de seguimiento (puedes retirarlo en cualquier momento).</li>
-          <li><strong>Interés legítimo:</strong> mejorar nuestros servicios y la experiencia del sitio web.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">4. Conservación de Datos</h2>
-        <p>Conservamos los datos de reserva durante 2 años tras tu última cita. Los datos de suscriptores del boletín se conservan hasta que te des de baja. Los datos de analíticas se conservan 14 meses.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">5. Terceros Procesadores</h2>
-        <p>Compartimos datos con estos procesadores bajo acuerdos de tratamiento de datos:</p>
-        <ul class="list-disc pl-5 space-y-2 mt-2">
-          <li><strong>Supabase</strong> (EE.UU.) — alojamiento de base de datos y autenticación</li>
-          <li><strong>Stripe</strong> (EE.UU.) — procesamiento de pagos</li>
-          <li><strong>Resend</strong> (EE.UU.) — envío de correos transaccionales</li>
-          <li><strong>Google Analytics</strong> (EE.UU.) — analíticas web (con consentimiento)</li>
-          <li><strong>Meta/Facebook</strong> (EE.UU.) — analíticas publicitarias (con consentimiento)</li>
-        </ul>
-        <p class="mt-2">Todas las transferencias a terceros países están cubiertas por el Marco de Datos UE-EE.UU. o Cláusulas Contractuales Tipo.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">6. Tus Derechos (ARCO / RGPD)</h2>
-        <p>Según la LOPDGDD y el RGPD, tienes derecho a:</p>
-        <ul class="list-disc pl-5 space-y-2 mt-2">
-          <li><strong>Acceso</strong> — solicitar una copia de tus datos</li>
-          <li><strong>Rectificación</strong> — corregir datos inexactos</li>
-          <li><strong>Supresión</strong> — solicitar la eliminación de tus datos</li>
-          <li><strong>Limitación</strong> — restringir el uso de tus datos</li>
-          <li><strong>Portabilidad</strong> — recibir tus datos en formato legible</li>
-          <li><strong>Oposición</strong> — oponerte al tratamiento basado en interés legítimo</li>
-          <li><strong>Retirar el consentimiento</strong> — en cualquier momento</li>
-        </ul>
-        <p class="mt-3">Para ejercer estos derechos, escríbenos a <a href={`mailto:${email}`} class="text-gold underline">{email}</a>. Responderemos en un plazo de 30 días.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">7. Reclamaciones</h2>
-        <p>Si consideramos que no hemos tratado tus datos correctamente, tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en <a href="https://www.aepd.es" class="text-gold underline" target="_blank" rel="noopener noreferrer">www.aepd.es</a>.</p>
-      </section>
-
-      <section>
-        <h2 class="font-display text-xl font-semibold text-text mb-3">8. Actualizaciones</h2>
-        <p>Podemos actualizar esta política periódicamente. Los cambios se publicarán en esta página con una fecha de revisión actualizada.</p>
-      </section>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">3. Tus Derechos (RGPD)</h2>
+        <p>Según el RGPD, tienes derecho a acceder, rectificar, eliminar, restringir, portar y oponerte al tratamiento de tus datos personales. Para ejercer estos derechos, contáctanos por WhatsApp o email.</p>
+        <h2 class="font-display text-2xl font-semibold text-charcoal mt-8 mb-4">4. Reclamaciones</h2>
+        <p>Si crees que no hemos gestionado tus datos correctamente, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en <a href="https://www.aepd.es/" class="text-gold-dark underline">www.aepd.es</a>.</p>
+      </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>
