@@ -61,7 +61,7 @@ const faqs = [
       <!-- FAQ Items -->
       <div class="divide-y divide-border">
         {faqs.map((faq, i) => (
-          <div class="faq-item fade-up" style={`transition-delay: ${i * 0.05}s`}>
+          <div class="faq-item fade-up" style={"transition-delay: " + (i * 0.05) + "s"}>
             <button
               class="faq-question"
               onclick="this.nextElementSibling.classList.toggle('open'); this.querySelector('span').textContent = this.nextElementSibling.classList.contains('open') ? '−' : '+'"

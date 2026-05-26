@@ -1,6 +1,7 @@
 ---
 const { lang = 'en', whatsappNumber, instagramUrl } = Astro.props;
 const isEs = lang === 'es';
+const base = '/hennabyhanazz';
 const t = (key: string) => {
   const translations: Record<string, Record<string, string>> = {
     en: {
@@ -23,7 +24,7 @@ const t = (key: string) => {
   return translations[lang]?.[key] || key;
 };
 
-const basePath = isEs ? '/es' : '';
+const basePath = isEs ? `${base}es` : base;
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isEs ? 'Hola, me gustaría reservar una sesión de henna' : 'Hello, I would like to book a henna session')}`;
 ---
 
@@ -52,13 +53,13 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
         <!-- Language Toggle -->
         <div class="lang-toggle">
           <a
-            href={isEs ? (Astro.url.pathname.replace(/^\/es/, '') || '/') : (Astro.url.pathname || '/')}
+            href={`${base}`}
             class={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${!isEs ? 'bg-white text-charcoal shadow-sm' : 'text-gray-light hover:text-charcoal'}`}
           >
             EN
           </a>
           <a
-            href={isEs ? (Astro.url.pathname || '/') : (`/es${Astro.url.pathname}` || '/es/')}
+            href={`${base}es/`}
             class={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${isEs ? 'bg-white text-charcoal shadow-sm' : 'text-gray-light hover:text-charcoal'}`}
           >
             ES

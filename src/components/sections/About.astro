@@ -1,6 +1,7 @@
 ---
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
+const base = '/hennabyhanazz';
 const t = (key: string) => {
   const translations: Record<string, Record<string, string>> = {
     en: {
@@ -50,7 +51,7 @@ const services = [
       <div class="relative fade-up">
         <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
           <img
-            src="/images/gallery/Imagen_Stand_Henna.jpg"
+            src={`${base}images/gallery/Imagen_Stand_Henna.jpg`}
             alt={isEs ? 'Hanazz, artista profesional de henna en Barcelona' : 'Hanazz, professional henna artist in Barcelona'}
             class="img-cover"
             loading="lazy"

@@ -37,13 +37,14 @@ const t = (key: string) => {
   return translations[lang]?.[key] || key;
 };
 
+const base = '/hennabyhanazz';
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isEs ? 'Hola, me gustaría reservar una sesión de henna' : 'Hello, I would like to book a henna session')}`;
-const basePath = isEs ? '/es' : '';
+const basePath = isEs ? `${base}es` : base;
 ---
 
 <!-- CTA Section -->
 <section class="section-padding bg-charcoal text-white relative overflow-hidden">
-  <div class="absolute inset-0 pattern-overlay opacity-50"></div>
+  <div class="absolute inset-0 pattern-overlay opacity-20"></div>
   <div class="container-premium relative z-10">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 fade-up">

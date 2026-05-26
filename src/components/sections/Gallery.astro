@@ -1,6 +1,7 @@
 ---
 const { lang = 'en' } = Astro.props;
 const isEs = lang === 'es';
+const base = '/hennabyhanazz';
 const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL || 'https://instagram.com/hennabyhanazz';
 
 const t = (key: string) => {
@@ -13,12 +14,12 @@ const t = (key: string) => {
 
 // Real henna images from the artist
 const galleryImages = [
-  { src: '/images/gallery/621847038_18091514279004894_4326534710981372451_n.webp', alt: 'Henna design by Hanazz' },
-  { src: '/images/gallery/630133994_18398384026179409_2016633784185980184_n..jpg', alt: 'Henna design by Hanazz' },
-  { src: '/images/gallery/623444876_18108268186687934_1720788768774193759_n..webp', alt: 'Henna design by Hanazz' },
-  { src: '/images/gallery/621007981_18139646959474591_7221960325564044459_n..jpg', alt: 'Henna design by Hanazz' },
-  { src: '/images/gallery/620956139_18099175102850718_2102993831649624179_n..jpg', alt: 'Henna design by Hanazz' },
-  { src: '/images/gallery/641243077_18559622419044315_4218939184815995326_n..jpg', alt: 'Henna design by Hanazz' },
+  { src: `${base}images/gallery/621847038_18091514279004894_4326534710981372451_n.webp`, alt: 'Henna design by Hanazz' },
+  { src: `${base}images/gallery/630133994_18398384026179409_2016633784185980184_n..jpg`, alt: 'Henna design by Hanazz' },
+  { src: `${base}images/gallery/623444876_18108268186687934_1720788768774193759_n..webp`, alt: 'Henna design by Hanazz' },
+  { src: `${base}images/gallery/621007981_18139646959474591_7221960325564044459_n..jpg`, alt: 'Henna design by Hanazz' },
+  { src: `${base}images/gallery/620956139_18099175102850718_2102993831649624179_n..jpg`, alt: 'Henna design by Hanazz' },
+  { src: `${base}images/gallery/641243077_18559622419044315_4218939184815995326_n..jpg`, alt: 'Henna design by Hanazz' },
 ];
 ---
 
@@ -34,7 +35,7 @@ const galleryImages = [
     <!-- Gallery Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
       {galleryImages.map((img, i) => (
-        <div class={`relative aspect-square rounded-xl overflow-hidden group cursor-pointer fade-up`} style={`transition-delay: ${i * 0.08}s`}>
+        <div class="relative aspect-square rounded-xl overflow-hidden group cursor-pointer fade-up" style={"transition-delay: " + (i * 0.08) + "s"}>
           <img
             src={img.src}
             alt={img.alt}
