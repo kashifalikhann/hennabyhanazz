@@ -37,7 +37,7 @@ const t = (key: string) => {
   return translations[lang]?.[key] || key;
 };
 
-const base = '/hennabyhanazz';
+const base = '/hennabyhanazz/';
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isEs ? 'Hola, me gustaría reservar una sesión de henna' : 'Hello, I would like to book a henna session')}`;
 const basePath = isEs ? `${base}es` : base;
 ---
@@ -91,10 +91,10 @@ const basePath = isEs ? `${base}es` : base;
       <div>
         <h4 className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-4">{t('footer.services')}</h4>
         <ul className="space-y-2 text-sm">
-          <li><a href={`${basePath}/#services`} className="hover:text-white transition-colors">{isEs ? 'Henna Nupcial' : 'Bridal Henna'}</a></li>
-          <li><a href={`${basePath}/#services`} className="hover:text-white transition-colors">{isEs ? 'Eventos y Fiestas' : 'Events & Parties'}</a></li>
-          <li><a href={`${basePath}/#services`} className="hover:text-white transition-colors">{isEs ? 'Sesiones Privadas' : 'Private Sessions'}</a></li>
-          <li><a href={`${basePath}/#services`} className="hover:text-white transition-colors">{isEs ? 'Talleres' : 'Workshops'}</a></li>
+          <li><a href={`${basePath}#services`} className="hover:text-white transition-colors">{isEs ? 'Henna Nupcial' : 'Bridal Henna'}</a></li>
+          <li><a href={`${basePath}#services`} className="hover:text-white transition-colors">{isEs ? 'Eventos y Fiestas' : 'Events & Parties'}</a></li>
+          <li><a href={`${basePath}#services`} className="hover:text-white transition-colors">{isEs ? 'Sesiones Privadas' : 'Private Sessions'}</a></li>
+          <li><a href={`${basePath}#services`} className="hover:text-white transition-colors">{isEs ? 'Talleres' : 'Workshops'}</a></li>
         </ul>
       </div>
 
@@ -112,8 +112,8 @@ const basePath = isEs ? `${base}es` : base;
       <div>
         <h4 className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-4">{t('footer.legal')}</h4>
         <ul className="space-y-2 text-sm">
-          <li><a href={`${basePath}/privacy`} className="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
-          <li><a href={`${basePath}/cookies`} className="hover:text-white transition-colors">{t('footer.cookies')}</a></li>
+          <li><a href={`${basePath}privacy`} className="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
+          <li><a href={`${basePath}cookies`} className="hover:text-white transition-colors">{t('footer.cookies')}</a></li>
         </ul>
       </div>
     </div>

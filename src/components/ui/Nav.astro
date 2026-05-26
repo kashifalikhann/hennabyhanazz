@@ -1,7 +1,7 @@
 ---
 const { lang = 'en', whatsappNumber, instagramUrl } = Astro.props;
 const isEs = lang === 'es';
-const base = '/hennabyhanazz';
+const base = '/hennabyhanazz/';
 const t = (key: string) => {
   const translations: Record<string, Record<string, string>> = {
     en: {
@@ -42,10 +42,10 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-8">
         <a href={`${basePath || '/'}`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.home')}</a>
-        <a href={`${basePath}/#about`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.about')}</a>
-        <a href={`${basePath}/#services`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.services')}</a>
-        <a href={`${basePath}/#gallery`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.gallery')}</a>
-        <a href={`${basePath}/#faq`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.faq')}</a>
+        <a href={`${basePath}#about`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.about')}</a>
+        <a href={`${basePath}#services`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.services')}</a>
+        <a href={`${basePath}#gallery`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.gallery')}</a>
+        <a href={`${basePath}#faq`} class="text-sm font-medium text-gray hover:text-charcoal transition-colors">{t('nav.faq')}</a>
       </div>
 
       <!-- Right side: Lang toggle + CTA -->
