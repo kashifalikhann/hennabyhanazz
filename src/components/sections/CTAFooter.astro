@@ -117,8 +117,8 @@ const basePath = isEs ? `${base}es` : base;
       <div>
         <h4 className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-4">{t('footer.legal')}</h4>
         <ul className="space-y-2 text-sm">
-          <li><a href={`${basePath}privacy`} className="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
-          <li><a href={`${basePath}cookies`} className="hover:text-white transition-colors">{t('footer.cookies')}</a></li>
+          <li><a href={`${basePath}${isEs ? '/privacidad' : '/privacy'}`} className="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
+          <li><a href={`${basePath}/cookies`} className="hover:text-white transition-colors">{t('footer.cookies')}</a></li>
         </ul>
       </div>
     </div>
